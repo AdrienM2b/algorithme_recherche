@@ -14,10 +14,44 @@
     <title>Les petits plats</title>
 </head>
 <body>
-    <header></header>
-    <main></main>
+    <header>
+        <div class="logo_container">        
+            <img src="Logo.png" alt="logo les petits plats" class="logo_img">
+        </div>
+        <h1 class="header_title">CHERCHEZ PARMI PLUS DE 1500 RECETTES 
+            DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
+            <div class="input-group search-bar">
+                <input type="text" class="form-control" placeholder="Rechercher une recette, un ingrédient, ...">
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="button">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
+                </div>
+            </div>
+    </header>
+    <main>
+        <div class="forms_container">
+                <input type="text" list="list-ingredients" name="ingredients" id="ingredient" placeholder="Ingredients">
+                <datalist id="list-ingredients">
+                    <select name="ingredients" id="select-ingredients"></select>
+                </datalist>
+            <form action="#" method="get">
+                <input type="text" list="list-ustensils" name="ustensiles" id="ustensiles" placeholder="Ustensiles">
+                <datalist id="list-ustensils">
+                </datalist>
+            </form>
+            <form action="#" method="get">
+                <input list="list-appliance" name="appareils" id="appareils" placeholder="Appareils">
+                <datalist id="list-appliance">
+                </datalist>
+            </form>
+            <span class="nbr_de_recette">1500 recettes</span>
+        </div>
+        <div class="card-group d-flex justify-content-between" id="card_container"></div>
+    </main>
    <footer></footer>
    <script src="recipes.json"></script> 
+   <script src="filter-factory.js"></script> 
    <script src="recipe-factory.js"></script> 
    <script src="displayRecipe.js"></script> 
 </body>

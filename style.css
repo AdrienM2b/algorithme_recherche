@@ -4,14 +4,25 @@
 }
 main {
     padding: 5%;
-    display: flex;
-    flex-wrap: wrap;
     background-color: #EDEDED;
 }
+header{
+    width: 100vw;
+    height: 50vh;
+    background-image: url('lampos-aritonang-24gR_9lCdes-unsplash 1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-h2{
+
+h1, h2{
     font-family: Anton;
-    font-size: 18px;
+    font-size: 18px !important;
 }
 
 
@@ -19,7 +30,7 @@ h3{
     font-family: Manrope;
     color: #7A7A7A;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 12px!important;
 }
 
 p{
@@ -27,22 +38,56 @@ p{
     font-size: 14px;
 }
 
-.recipe-container{
-    width: 351px;
-    height: 730px;
-    margin: 3%;
+/* header */
+
+.logo_container {
+    width: 35%;
+    position: absolute;
+    top: 4%;
+    left: 4%;
 }
 
-/* .recipe-container-media{
-    width: 100%;
-    height: 20vh;
+.header_title {
+    color: #FFD15B;
+    width: 45%;
+    text-align: center;
 }
 
+.input-group.search-bar {
+    width: 80%;
+    height: 10%;
+}
 
-.recipe-content_container-ingredients{
+.input-group-append {
+    height: 100%;
     display: flex;
-    flex-wrap: wrap;
-} */
+    align-items: center;
+    transform: translateX(-110%);
+    z-index: 1000;
+}
+
+/* header */
+
+/* filtre */
+
+.forms_container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+/* filtre */
+
+.recipe-container{
+    width: 23rem;
+    height: 730px;
+    background-color: white;
+    margin-bottom: 5%;
+}
+
+.recipe-content{
+    padding: 1%;
+}
 
 .name-ingredients{
     display: flex;
@@ -58,6 +103,7 @@ p{
 .quantity-ingredients{
     color: lightgrey;
 } 
+
 .recipe-media{
     height: 253px;
     object-fit: cover;

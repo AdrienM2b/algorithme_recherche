@@ -1,17 +1,22 @@
 async function getData() {
     let reponse = await fetch('recipes.json');
     let recipes = (await reponse).json();
-    // bien retourner les tableaux une fois récupéré
+
     return recipes;
 }
 
+
 async function showRecipes(recipes){
-    const mainPage = document.querySelector('main')
+
+    // affichage des cards
+    const cardContainer = document.querySelector('#card_container')
     recipes.forEach(datas => {
         const getRecipeFact = recipesFactory(datas)
         const showTheRecipes = getRecipeFact.displayRecipes()
-        mainPage.appendChild(showTheRecipes)
-    });   
+        cardContainer.appendChild(showTheRecipes)
+    })
+    
+    // affichage des images
     const media = document.querySelectorAll('.recipe-media')
     media.forEach((medias, i) => {
         let URLImage = ''
@@ -19,20 +24,7 @@ async function showRecipes(recipes){
         recipes[i].id < 10 ? URLImage = baseURLImage + `/Recette0` + recipes[i].id + `.jpg` : URLImage = baseURLImage + `/Recette` + recipes[i].id + `.jpg`
         medias.setAttribute('src', URLImage)
     })
-    // const listOfIngredients = document.querySelectorAll('.recipe-content_container-ingredients')
-    // listOfIngredients.forEach((ingredients, i) => {
-    //     let listIngredients = recipes[i].ingredients
-    //     for(i = 0; i < listIngredients.length; i++){
-    //         let text = document.createElement('p')
-    //         text.textContent = listIngredients[i].ingredient
-
-
-    //         let quantity = document.createElement('p')
-    //         quantity.textContent = listIngredients[i].quantity
-    //         ingredients.appendChild(text)
-    //     }
-    // })
-    
+    filtersFactory(recipes)
 }
 
 

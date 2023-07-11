@@ -4,12 +4,15 @@ function recipesFactory(data){
     function displayRecipes(){
         // card de la recette
         const recipeContainer = document.createElement('article')
-        recipeContainer.classList.add('card')
+        recipeContainer.classList.add('card-sm')
+        recipeContainer.classList.add('rounded-4')
         recipeContainer.classList.add('recipe-container')
 
         // L'image
         const mediaRecipe = document.createElement('img')
         mediaRecipe.classList.add('card-img-top')
+        mediaRecipe.classList.add('rounded-4')
+        mediaRecipe.classList.add('rounded-bottom-0')
         mediaRecipe.classList.add('recipe-media')
         mediaRecipe.setAttribute('src', '')
 
@@ -29,11 +32,16 @@ function recipesFactory(data){
         const recipeTextTitle = document.createElement('h3')
         recipeTextTitle.textContent = 'Recette'
         recipeTextTitle.style.font = 'uppercase'
+        // couper le texte 
+        function truncate(str, maxlength) {
+            return (str.length > maxlength) ?
+              str.slice(0, maxlength - 1) + '…' : str;
+        }
         // descritpion de la recette 
         const recipeText = document.createElement('p')
         recipeText.classList.add('card-text')
         recipeText.classList.add('recipe-content_text')
-        recipeText.textContent = description
+        recipeText.textContent = truncate(description, 181)
 
         // conteneur du titre et des ingredients
         const recipeIngredients = document.createElement('div')
