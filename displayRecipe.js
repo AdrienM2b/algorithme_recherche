@@ -1,35 +1,58 @@
-async function getData() {
-    let reponse = await fetch('recipes.json');
-    let recipes = (await reponse).json();
-
-    return recipes;
-}
+import { recherchePrincipale } from "./algo_methode_array.js"
+import { filtersFactory } from "./Filters.js"
+import { recipesFactory } from "./recipe-factory.js"
 
 
-async function showRecipes(recipes){
+const cardContainer = document.querySelector('#card_container')
 
-    // affichage des cards
-    const cardContainer = document.querySelector('#card_container')
-    recipes.forEach(datas => {
-        const getRecipeFact = recipesFactory(datas)
-        const showTheRecipes = getRecipeFact.displayRecipes()
-        cardContainer.appendChild(showTheRecipes)
-    })
-    
-    // affichage des images
-    const media = document.querySelectorAll('.recipe-media')
-    media.forEach((medias, i) => {
-        let URLImage = ''
-        const baseURLImage = '/Photos P7 JS Les petits plats'
-        recipes[i].id < 10 ? URLImage = baseURLImage + `/Recette0` + recipes[i].id + `.jpg` : URLImage = baseURLImage + `/Recette` + recipes[i].id + `.jpg`
-        medias.setAttribute('src', URLImage)
-    })
+
+function displaySearch(recipes, selectedElement){
+    const valueInput = document.querySelector('.form-control')
+    // J'affiche par défaut les 50 recettes
     filtersFactory(recipes)
-}
-
-
-async function init(){
-    const {recipes} = await getData()
     showRecipes(recipes)
+    valueInput.addEventListener('input', () => {
+        const inputValue = valueInput.value
+        // Je vérifie si la longueur de la chaîne de caractères est d'au moins 3 caractères
+        if (inputValue.length >= 3) {
+            // Je recupère le tri de mon algorithme
+            const resultatRecherche = recherchePrincipale(recipes, inputValue)
+            // J'affiche mes recettes triées et je mets à jour mes filtres
+            filtersFactory(resultatRecherche, valueInput)
+            showRecipes(resultatRecherche, valueInput)
+        } else {
+            // Si la longueur est inférieure à 3, j'efface les résultats
+            cardContainer.innerHTML = ""
+            // J'affiche à nouveau mes 50 recettes et je mets à jour mes filtres
+            filtersFactory(recipes, valueInput)
+            showRecipes(recipes, valueInput)
+        }
+    })
+
+    return valueInput
 }
-init()
+
+
+function showRecipes(recipes, valueInput){
+    cardContainer.innerHTML = '' // Effacez le contenu précédent
+
+    if (recipes.length === 0) {
+      // Aucune recette trouvée, affichez le message 
+      cardContainer.innerHTML = " Aucune recette ne contient " + valueInput.value
+    } else {
+      // Des recettes ont été trouvées
+      recipes.forEach((recipe) => {
+        const getRecipeFact = recipesFactory(recipe)
+        const showTheRecipes = getRecipeFact.recipesDesign()
+        cardContainer.appendChild(showTheRecipes)
+      })
+    }
+
+    // const nbrPromise = nbrOfRecipes() // Obtention de la promesse
+    // const nbr = await nbrPromise
+    // console.log(nbr)
+    // if(nbr < 3){
+    //     cardContainer.style.marginRight = '36%'
+}
+
+export { displaySearch, showRecipes }
