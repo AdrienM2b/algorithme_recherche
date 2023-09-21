@@ -18,14 +18,13 @@ function createHtmlElement(uniqueElements, dataList, inputList){
 // Fonction pour ajouter le bouton au formulaire
 function addTagButton(recipes, tagName) {
     const formContainer = document.querySelector('.forms_container')
-    const buttonTag = document.createElement('button')
-    buttonTag.classList = 'btn-close show'
-    buttonTag.type = 'button'
-    buttonTag.textContent = tagName
-    // Ajoutez le nouveau bouton
-    formContainer.appendChild(buttonTag)
-    // Mettez à jour la référence au bouton actuel
-    selectedButton = buttonTag
+        const buttonTag = document.createElement('button')
+        buttonTag.classList = 'btn-close show'
+        buttonTag.type = 'button'
+        buttonTag.textContent = tagName
+        // Ajoutez le nouveau bouton
+        formContainer.appendChild(buttonTag)
+
 }
 
 export { createHtmlElement, addTagButton }

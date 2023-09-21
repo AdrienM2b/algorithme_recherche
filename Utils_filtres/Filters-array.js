@@ -30,9 +30,9 @@ function filtersFactory(recipes, input) {
     addEventListenerToDropdownItems(recipes, dataListAppareils)
 
     // On appelle les ecouteurs des inputs des listes
-    addEventListenerInputs(extractElementsIngredients, dataListIngredients, inputIngredients, recipes)
-    addEventListenerInputs(extractElementsUstensils, dataListUstensiles, inputUstensiles, recipes)
-    addEventListenerInputs(extractElementsAppliance, dataListAppareils, inputAppareils, recipes)
+    addEventListenerInputs(recipes, extractElementsIngredients, dataListIngredients, inputIngredients)
+    addEventListenerInputs(recipes, extractElementsUstensils, dataListUstensiles, inputUstensiles)
+    addEventListenerInputs(recipes, extractElementsAppliance, dataListAppareils, inputAppareils)
 }
 
 // création des listes en fonction des données reçues
@@ -63,8 +63,8 @@ function addEventListenerToDropdownItems(recipes, dataList) {
             // Exécutez la recherche avec l'element sélectionné
             const resultatRecherche = rechercheParTag(recipes, selectedIngredient)
             // Mettez à jour l'affichage des recettes avec les nouvelles recettes filtrées
-            showRecipes(resultatRecherche)
-            filtersFactory(resultatRecherche)
+            showRecipes(resultatRecherche, selectedIngredient)
+            filtersFactory(resultatRecherche, selectedIngredient)
             addTagButton(resultatRecherche, selectedIngredient)
         })
     })
@@ -72,7 +72,7 @@ function addEventListenerToDropdownItems(recipes, dataList) {
 
 
 // Fonction ecoute les inputs pour trier la liste des ingredients, appareils, ustensiles
-function addEventListenerInputs(uniqueElements, datalist, inputDataList, recipes) {
+function addEventListenerInputs(recipes, uniqueElements, datalist, inputDataList) {
     inputDataList.addEventListener('input', () => {
         const valueOfinputDataList = inputDataList.value
         if (valueOfinputDataList.length >= 3) {

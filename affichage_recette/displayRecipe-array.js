@@ -9,8 +9,8 @@ const cardContainer = document.querySelector('#card_container')
 function displaySearch(recipes, selectedElement){
     const valueInput = document.querySelector('.form-control')
     // J'affiche par défaut les 50 recettes
-    filtersFactory(recipes)
-    showRecipes(recipes)
+    filtersFactory(recipes, selectedElement)
+    showRecipes(recipes, selectedElement)
     valueInput.addEventListener('input', () => {
         const inputValue = valueInput.value
         // Je vérifie si la longueur de la chaîne de caractères est d'au moins 3 caractères
