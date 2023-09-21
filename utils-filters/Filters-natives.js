@@ -1,6 +1,6 @@
-import { rechercheParTag } from "./algo_methode_natives.js"
-import { showRecipes, displaySearch } from "./displayRecipe-natives.js"
-import { createHtmlElement, addTagButton } from "./filters-factory-natives.js"
+import { rechercheParTag } from "../algorithme/algo_methode_natives.js"
+import { showRecipes, displaySearch } from "../affichage-recette/displayRecipe-natives.js"
+import { createHtmlElement, addTagButton } from "../utils-filters/filters-factory-natives.js"
 
 function filtersFactory(recipes, input) {
     // Créer une constante avec flatMap opur pouvoir l'utiliser dans la fonction extractELements

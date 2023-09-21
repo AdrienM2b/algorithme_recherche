@@ -1,4 +1,4 @@
-import { displaySearch } from './displayRecipe-natives.js';
+import { displaySearch } from '../affichage-recette/displayRecipe-natives.js';
 
 
 async function getData() {

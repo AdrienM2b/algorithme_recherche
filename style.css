@@ -6,6 +6,7 @@ main {
   padding: 5%;
   background-color: #ededed;
 }
+<<<<<<< HEAD
 header {
   width: 100vw;
   height: 50vh;
@@ -17,6 +18,19 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+=======
+header{
+    width: 100vw;
+    height: 50vh;
+    background-image: url('/assets/header_background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+>>>>>>> e0f2aee (ajout dans les dossiers et changement des impots)
 }
 
 h1,
