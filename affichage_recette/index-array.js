@@ -1,4 +1,4 @@
-import { displaySearch } from './displayRecipe-array';
+import { displaySearch } from './displayRecipe-array.js';
 
 
 async function getData() {
