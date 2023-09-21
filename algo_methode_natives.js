@@ -1,5 +1,4 @@
 function recherchePrincipale(data, input){
-    reduireLesLists(data, input)
     // initialisation du nouveau tableau qui va accueuillir les datas triées
     const resultatRechcerche = []
 
@@ -38,8 +37,3 @@ function rechercheParTag(data, input){
     return resultatRechcercheParTag
 }
 export { recherchePrincipale, rechercheParTag }
-
-function reduireLesLists(data, input){
-    const ingredientList = data.reduce((acc, currentRecipe) => acc.includes(currentRecipe.ingredients.ingredient) ? acc : acc.concat(currentRecipe.ingredients.ingredient), []) 
-    console.log(ingredientList)
-}
