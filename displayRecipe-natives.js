@@ -1,5 +1,5 @@
 import { recherchePrincipale } from "./algo_methode_natives.js"
-import { filtersFactory } from "./Filters.js"
+import { filtersFactory } from "./Filters-natives.js"
 import { recipesFactory } from "./recipe-factory.js"
 
 
