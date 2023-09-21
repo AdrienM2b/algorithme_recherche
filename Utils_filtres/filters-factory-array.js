@@ -15,16 +15,17 @@ function createHtmlElement(uniqueElements, dataList, inputList){
     })
 }
 
-// Création du Html du tag, à ajouté sous les listes
-function tagHtml(recipes, button){
-    const conteneurFormulaire = document.querySelector('.forms_container')
+// Fonction pour ajouter le bouton au formulaire
+function addTagButton(recipes, tagName) {
+    const formContainer = document.querySelector('.forms_container')
     const buttonTag = document.createElement('button')
-    buttonTag.classList = 'btn-close', 'show'
+    buttonTag.classList = 'btn-close show'
     buttonTag.type = 'button'
-    buttonTag.textContent = button
-    conteneurFormulaire.appendChild(buttonTag)
-
-    return conteneurFormulaire
+    buttonTag.textContent = tagName
+    // Ajoutez le nouveau bouton
+    formContainer.appendChild(buttonTag)
+    // Mettez à jour la référence au bouton actuel
+    selectedButton = buttonTag
 }
 
-export { createHtmlElement, tagHtml }
+export { createHtmlElement, addTagButton }
