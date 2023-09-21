@@ -1,5 +1,5 @@
-import { filtersFactory } from "./Filters.js"
-import { showRecipes, displaySearch } from "./displayRecipe.js"
+import { filtersFactory } from "./Filters-natives.js"
+import { showRecipes, displaySearch } from "./displayRecipe-natives.js"
 
 // Creation du html des boutons 
 function createHtmlElement(uniqueElements, dataList, inputList){
