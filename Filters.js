@@ -1,4 +1,4 @@
-import { rechercheParTag } from "./algo_methode_array.js"
+import { rechercheParTag } from "./algo_methode_natives.js"
 import { showRecipes, displaySearch } from "./displayRecipe.js"
 import { createHtmlElement, addTagButton } from "./filters-factory.js"
 
@@ -43,23 +43,20 @@ function extractElements(recipes, type, datalist, mappedIngredient){
         const ingredientListReduite = justIngredients.reduce((acc, currentIngredient) => acc.includes(currentIngredient) ? acc : acc.concat(currentIngredient), uniqueElements)
         uniqueElements.push(ingredientListReduite)
         return createHtmlElement(ingredientListReduite, datalist)
-        // for (const element of justIngredients) {
-        //     if(!uniqueElements.includes(element))
-        //     uniqueElements.push(element)
-        // }
     } else{
         const elements = recipes.flatMap(recipe => recipe[type])
         const elementsListReduite = elements.reduce((acc, currentElements) => acc.includes(currentElements) ? acc : acc.concat(currentElements), uniqueElements)
         uniqueElements.push(elementsListReduite)
         createHtmlElement(elementsListReduite, datalist)
     }
+
     return uniqueElements
 }
 
 
 // Creation d'un fonction pour factoriser les Listeners sur les listes 
 function addEventListenerToDropdownItems(recipes, dataList) {
-    const formContainer = document.querySelector('.forms_container')
+    // const formContainer = document.querySelector('.forms_container')
     dataList.querySelectorAll('.dropdown-item').forEach((button, index) => {
         button.addEventListener('click', () => {
             const selectedIngredient = button.textContent

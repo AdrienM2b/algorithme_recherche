@@ -1,4 +1,4 @@
-import { recherchePrincipale } from "./algo_methode_array.js"
+import { recherchePrincipale } from "./algo_methode_natives.js"
 import { filtersFactory } from "./Filters.js"
 import { recipesFactory } from "./recipe-factory.js"
 
