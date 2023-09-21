@@ -5,6 +5,14 @@ import { recipesFactory } from "./recipe-factory.js"
 
 const cardContainer = document.querySelector('#card_container')
 
+function removeTag() {
+  const formContainer = document.querySelector('.forms_container');
+  const tagButton = formContainer.querySelector('.btn-close');
+  if (tagButton) {
+      formContainer.removeChild(tagButton);
+  }
+}
+
 
 function displaySearch(recipes, selectedElement){
     const valueInput = document.querySelector('.form-control')
@@ -12,6 +20,7 @@ function displaySearch(recipes, selectedElement){
     filtersFactory(recipes)
     showRecipes(recipes)
     valueInput.addEventListener('input', () => {
+        removeTag()
         const inputValue = valueInput.value
         // Je vérifie si la longueur de la chaîne de caractères est d'au moins 3 caractères
         if (inputValue.length >= 3) {
@@ -28,7 +37,6 @@ function displaySearch(recipes, selectedElement){
             showRecipes(recipes, valueInput)
         }
     })
-
     return valueInput
 }
 
@@ -41,11 +49,12 @@ function showRecipes(recipes, valueInput){
       cardContainer.innerHTML = " Aucune recette ne contient " + valueInput.value
     } else {
       // Des recettes ont été trouvées
-      recipes.forEach((recipe) => {
+      for (let i = 0; i < recipes.length; i++) {
+        const recipe = recipes[i]
         const getRecipeFact = recipesFactory(recipe)
         const showTheRecipes = getRecipeFact.recipesDesign()
         cardContainer.appendChild(showTheRecipes)
-      })
+      }
     }
 
     // const nbrPromise = nbrOfRecipes() // Obtention de la promesse
@@ -54,5 +63,6 @@ function showRecipes(recipes, valueInput){
     // if(nbr < 3){
     //     cardContainer.style.marginRight = '36%'
 }
+
 
 export { displaySearch, showRecipes }

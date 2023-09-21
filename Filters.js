@@ -1,6 +1,6 @@
 import { rechercheParTag } from "./algo_methode_array.js"
 import { showRecipes, displaySearch } from "./displayRecipe.js"
-import { createHtmlElement, tagHtml } from "./filters-factory.js"
+import { createHtmlElement, addTagButton } from "./filters-factory.js"
 
 function filtersFactory(recipes, input) {
     // Créer une constante avec flatMap opur pouvoir l'utiliser dans la fonction extractELements
@@ -30,9 +30,9 @@ function filtersFactory(recipes, input) {
     addEventListenerToDropdownItems(recipes, dataListAppareils)
 
     // On appelle les ecouteurs des inputs des listes
-    addEventListenerInputs(extractElementsIngredients, dataListIngredients, inputIngredients)
-    addEventListenerInputs(extractElementsUstensils, dataListUstensiles, inputUstensiles)
-    addEventListenerInputs(extractElementsAppliance, dataListAppareils, inputAppareils)
+    addEventListenerInputs(extractElementsIngredients, dataListIngredients, inputIngredients, recipes)
+    addEventListenerInputs(extractElementsUstensils, dataListUstensiles, inputUstensiles, recipes)
+    addEventListenerInputs(extractElementsAppliance, dataListAppareils, inputAppareils, recipes)
 }
 
 // création des listes en fonction des données reçues
@@ -40,43 +40,42 @@ function extractElements(recipes, type, datalist, mappedIngredient){
     const uniqueElements = []
     if (type === 'ingredient') {
         const justIngredients = mappedIngredient.flatMap(recipe => recipe[type].toString().toLowerCase())
-        justIngredients.forEach(element => {
-            if(!uniqueElements.includes(element))
-            uniqueElements.push(element)
-        })
+        const ingredientListReduite = justIngredients.reduce((acc, currentIngredient) => acc.includes(currentIngredient) ? acc : acc.concat(currentIngredient), uniqueElements)
+        uniqueElements.push(ingredientListReduite)
+        return createHtmlElement(ingredientListReduite, datalist)
+        // for (const element of justIngredients) {
+        //     if(!uniqueElements.includes(element))
+        //     uniqueElements.push(element)
+        // }
     } else{
         const elements = recipes.flatMap(recipe => recipe[type])
-        elements.forEach(element => {
-            const lowerCasedElement = element.toString().toLowerCase()
-            if(!uniqueElements.includes(lowerCasedElement)){
-                uniqueElements.push(lowerCasedElement)
-            }
-        })
+        const elementsListReduite = elements.reduce((acc, currentElements) => acc.includes(currentElements) ? acc : acc.concat(currentElements), uniqueElements)
+        uniqueElements.push(elementsListReduite)
+        createHtmlElement(elementsListReduite, datalist)
     }
-    createHtmlElement(uniqueElements, datalist)
     return uniqueElements
 }
 
 
 // Creation d'un fonction pour factoriser les Listeners sur les listes 
 function addEventListenerToDropdownItems(recipes, dataList) {
-    dataList.querySelectorAll('.dropdown-item').forEach(button => {
+    const formContainer = document.querySelector('.forms_container')
+    dataList.querySelectorAll('.dropdown-item').forEach((button, index) => {
         button.addEventListener('click', () => {
             const selectedIngredient = button.textContent
-            console.log(selectedIngredient)
             // Exécutez la recherche avec l'element sélectionné
             const resultatRecherche = rechercheParTag(recipes, selectedIngredient)
             // Mettez à jour l'affichage des recettes avec les nouvelles recettes filtrées
             showRecipes(resultatRecherche)
             filtersFactory(resultatRecherche)
-            tagHtml(resultatRecherche, selectedIngredient)
+            addTagButton(resultatRecherche, selectedIngredient)
         })
     })
 }
 
 
 // Fonction ecoute les inputs pour trier la liste des ingredients, appareils, ustensiles
-function addEventListenerInputs(uniqueElements, datalist, inputDataList) {
+function addEventListenerInputs(uniqueElements, datalist, inputDataList, recipes) {
     inputDataList.addEventListener('input', () => {
         const valueOfinputDataList = inputDataList.value
         if (valueOfinputDataList.length >= 3) {
@@ -86,21 +85,13 @@ function addEventListenerInputs(uniqueElements, datalist, inputDataList) {
             datalist.innerHTML = ''
            // Mettre à jour l'affichage de la liste avec les éléments filtrés
            createHtmlElement(filteredElements, datalist)
-            
            // Réaffecter les écouteurs
-           addEventListenerToDropdownItems(uniqueElements, datalist)
+           addEventListenerToDropdownItems(recipes, datalist)
         } else if(valueOfinputDataList.length == 0) {
             createHtmlElement(uniqueElements, datalist)
         }
     })
 }
-
-
-
-
-
-
-
 
 
 export { filtersFactory }
