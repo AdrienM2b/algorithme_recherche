@@ -4,7 +4,13 @@ import { recipesFactory } from "./recipe-factory-array.js"
 
 
 const cardContainer = document.querySelector('#card_container')
-
+function removeTag() {
+  const formContainer = document.querySelector('.forms_container');
+  const tagButton = formContainer.querySelector('.btn-close');
+  if (tagButton) {
+      formContainer.removeChild(tagButton);
+  }
+}
 
 function displaySearch(recipes, selectedElement){
     const valueInput = document.querySelector('.form-control')
@@ -12,6 +18,7 @@ function displaySearch(recipes, selectedElement){
     filtersFactory(recipes, selectedElement)
     showRecipes(recipes, selectedElement)
     valueInput.addEventListener('input', () => {
+        removeTag()
         const inputValue = valueInput.value
         // Je vérifie si la longueur de la chaîne de caractères est d'au moins 3 caractères
         if (inputValue.length >= 3) {
