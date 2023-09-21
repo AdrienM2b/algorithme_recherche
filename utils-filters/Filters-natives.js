@@ -63,8 +63,8 @@ function addEventListenerToDropdownItems(recipes, dataList) {
             // Exécutez la recherche avec l'element sélectionné
             const resultatRecherche = rechercheParTag(recipes, selectedIngredient)
             // Mettez à jour l'affichage des recettes avec les nouvelles recettes filtrées
-            showRecipes(resultatRecherche)
-            filtersFactory(resultatRecherche)
+            showRecipes(resultatRecherche, selectedIngredient)
+            filtersFactory(resultatRecherche, selectedIngredient)
             addTagButton(resultatRecherche, selectedIngredient)
         })
     })
