@@ -1,5 +1,3 @@
-import { showRecipes, displaySearch } from "./displayRecipe-array.js"
-
 // Creation du html des boutons 
 function createHtmlElement(uniqueElements, dataList, inputList){
     // const rechercheTag = document.createElement('input')

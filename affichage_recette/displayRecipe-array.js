@@ -1,5 +1,5 @@
-import { recherchePrincipale } from "./algo_methode_array.js"
-import { filtersFactory } from "./Filters.js"
+import { recherchePrincipale } from "../algorithme_de_recherche/algo_methode_array.js"
+import { filtersFactory } from "../Utils_filtres/Filters-array.js"
 import { recipesFactory } from "./recipe-factory-array.js"
 
 
