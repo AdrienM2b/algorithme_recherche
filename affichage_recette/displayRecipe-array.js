@@ -1,6 +1,6 @@
 import { recherchePrincipale } from "./algo_methode_array.js"
 import { filtersFactory } from "./Filters.js"
-import { recipesFactory } from "./recipe-factory.js"
+import { recipesFactory } from "./recipe-factory-array.js"
 
 
 const cardContainer = document.querySelector('#card_container')
