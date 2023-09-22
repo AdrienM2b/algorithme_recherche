@@ -4,16 +4,11 @@ function recipesFactory(data){
     function recipesDesign(){
         // card de la recette
         const recipeContainer = document.createElement('article')
-        recipeContainer.classList.add('card-sm')
-        recipeContainer.classList.add('rounded-4')
-        recipeContainer.classList.add('recipe-container')
+        recipeContainer.classList = 'card-sm rounded-4 col-md-3 mb-3 recipe-container gap-3'
 
         // L'image
         const mediaRecipe = document.createElement('img')
-        mediaRecipe.classList.add('card-img-top')
-        mediaRecipe.classList.add('rounded-4')
-        mediaRecipe.classList.add('rounded-bottom-0')
-        mediaRecipe.classList.add('recipe-media')
+        mediaRecipe.classList = 'card-img-top rounded-4 rounded-bottom-0 recipe-media'
         
         let URLImage = ''
         const baseURLImage = '/Photos P7 JS Les petits plats'
