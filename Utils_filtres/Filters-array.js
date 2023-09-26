@@ -78,7 +78,7 @@ function extractElements(recipes, type, datalist, mappedIngredient) {
         acc.includes(currentIngredient) ? acc : acc.concat(currentIngredient),
       uniqueElements
     );
-    uniqueElements.push(ingredientListReduite);
+
     return createHtmlElement(ingredientListReduite, datalist);
   } else {
     const elements = recipes.flatMap((recipe) => recipe[type]);
@@ -87,7 +87,6 @@ function extractElements(recipes, type, datalist, mappedIngredient) {
         acc.includes(currentElements) ? acc : acc.concat(currentElements),
       uniqueElements
     );
-    uniqueElements.push(elementsListReduite);
     createHtmlElement(elementsListReduite, datalist);
   }
 
