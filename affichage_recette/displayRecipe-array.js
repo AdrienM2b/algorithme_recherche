@@ -3,9 +3,9 @@ import { updateFilters } from '../Utils_filtres/Filters-array.js';
 import { recipesFactory } from './recipe-factory-array.js';
 
 const cardContainer = document.querySelector('#card_container');
-const formContainer = document.querySelector('.forms_container');
+const formContainer = document.querySelector('.filters');
 function removeTag() {
-  const tagButton = formContainer.querySelector('.btn-close');
+  const tagButton = formContainer.querySelector('.filters_selected-tag');
   if (tagButton) {
     formContainer.removeChild(tagButton);
   }

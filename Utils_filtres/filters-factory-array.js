@@ -13,7 +13,7 @@ function createHtmlElement(uniqueElements, dataList, inputList) {
 
 // Fonction pour ajouter le bouton au formulaire
 function addTagButton(recipes, tagName) {
-  const formContainer = document.querySelector('.selected-tag');
+  const formContainer = document.querySelector('.filters_selected-tag');
   const tagSelected = document.createElement('span');
   tagSelected.classList = 'tag_selected show';
   tagSelected.textContent = tagName;
