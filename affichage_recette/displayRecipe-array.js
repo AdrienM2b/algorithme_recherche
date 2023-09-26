@@ -3,8 +3,8 @@ import { updateFilters } from '../Utils_filtres/Filters-array.js';
 import { recipesFactory } from './recipe-factory-array.js';
 
 const cardContainer = document.querySelector('#card_container');
+const formContainer = document.querySelector('.forms_container');
 function removeTag() {
-  const formContainer = document.querySelector('.forms_container');
   const tagButton = formContainer.querySelector('.btn-close');
   if (tagButton) {
     formContainer.removeChild(tagButton);
@@ -52,12 +52,18 @@ function showRecipes(recipes, valueInput) {
       cardContainer.appendChild(showTheRecipes);
     });
   }
+  totalNbrOfRecipes(recipes);
+}
 
-  // const nbrPromise = nbrOfRecipes() // Obtention de la promesse
-  // const nbr = await nbrPromise
-  // console.log(nbr)
-  // if(nbr < 3){
-  //     cardContainer.style.marginRight = '36%'
+function totalNbrOfRecipes(recipes) {
+  const nbrOfrecipes = recipes.length;
+  const containerNbrRecipes = document.querySelector(
+    '.filters_nbr-recipes_container'
+  );
+  const displayNbrOfRecipes = document.createElement('p');
+  containerNbrRecipes.innerHTML = '';
+  displayNbrOfRecipes.textContent = nbrOfrecipes + ' recettes';
+  containerNbrRecipes.appendChild(displayNbrOfRecipes);
 }
 
 export { displaySearch, showRecipes };

@@ -13,13 +13,16 @@ function createHtmlElement(uniqueElements, dataList, inputList) {
 
 // Fonction pour ajouter le bouton au formulaire
 function addTagButton(recipes, tagName) {
-  const formContainer = document.querySelector('.forms_container');
-  const buttonTag = document.createElement('button');
-  buttonTag.classList = 'btn-close show';
-  buttonTag.type = 'button';
-  buttonTag.textContent = tagName;
+  const formContainer = document.querySelector('.selected-tag');
+  const tagSelected = document.createElement('span');
+  tagSelected.classList = 'tag_selected show';
+  tagSelected.textContent = tagName;
+
+  const buttonClose = document.createElement('button');
+  buttonClose.classList = 'btn-close';
   // Ajoutez le nouveau bouton
-  formContainer.appendChild(buttonTag);
+  formContainer.appendChild(tagSelected);
+  tagSelected.appendChild(buttonClose);
 }
 
 export { createHtmlElement, addTagButton };
