@@ -1,139 +1,154 @@
-*{
-    padding: 0;
-    margin: 0;
+* {
+  padding: 0;
+  margin: 0;
 }
 main {
-    padding: 5%;
-    background-color: #EDEDED;
+  padding: 5%;
+  background-color: #ededed;
 }
-header{
-    width: 100vw;
-    height: 50vh;
-    background-image: url('/assets/header_background.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
-h1, h2{
-    font-family: Anton;
-    font-size: 18px !important;
+header {
+  width: 100vw;
+  height: 50vh;
+  background-image: url('header_background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-
-h3{
-    font-family: Manrope;
-    color: #7A7A7A;
-    text-transform: uppercase;
-    font-size: 12px!important;
+h1,
+h2 {
+  font-family: Anton;
+  font-size: 18px !important;
 }
 
-p{
-    font-family: Manrope;
-    font-size: 14px;
+h3 {
+  font-family: Manrope;
+  color: #7a7a7a;
+  text-transform: uppercase;
+  font-size: 12px !important;
+}
+
+p {
+  font-family: Manrope;
+  font-size: 14px;
 }
 
 /* header */
 
 .logo_container {
-    width: 35%;
-    position: absolute;
-    top: 4%;
-    left: 4%;
+  width: 35%;
+  position: absolute;
+  top: 4%;
+  left: 4%;
 }
 
 .header_title {
-    color: #FFD15B;
-    width: 45%;
-    text-align: center;
+  color: #ffd15b;
+  width: 45%;
+  text-align: center;
 }
 
 .input-group.search-bar {
-    width: 80%;
-    height: 10%;
+  width: 80%;
+  height: 10%;
 }
 
-.btn-primary{
-    width: 5vh;
-    height: 5vh;
-    margin: 1% auto;
-    transform: translateX(-110%);
+.btn-primary {
+  width: 5vh;
+  height: 5vh;
+  margin: 1% auto;
+  transform: translateX(-110%);
 }
 
-.fa-search{
-    font-size: 150%
+.fa-search {
+  font-size: 150%;
 }
 
 .input-group .btn {
-    border-radius: 10px 10px 10px 10px !important;
-    z-index: 1000 !important;
-    background-color: black;
+  border-radius: 10px 10px 10px 10px !important;
+  z-index: 1000 !important;
+  background-color: black;
 }
-
-/* header */
 
 /* filtre */
 
-.forms_container{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5%;
+.filters {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
 }
-/* filtre */
-
-.recipe-container{
-    width: 23rem;
-    height: 730px;
-    background-color: white;
-    margin-bottom: 5%;
+/* block avec le nombre de recette + les dropdown des filtres */
+.filters_dropdown_nbr-recipes {
+  width: 100%;
 }
 
-.recipe-content{
-    padding: 1%;
+/* les conteneurs des dropdown et du nombre de recette */
+.filters_dropdown_container {
+  width: 100%;
 }
 
-.name-ingredients{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
+filters_nbr-recipes_container {
+  width: 50vh !important;
 }
 
-.recipe-content_container-ingredients{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.quantity-ingredients{
-    color: lightgrey;
-} 
-
-.recipe-media{
-    height: 253px;
-    object-fit: cover;
-
+/*  conteneur des tag selectionnés */
+.filters_selected-tag {
+  width: 20%;
 }
 
 /* menu déroulant */
-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-.dropdown-menu{
-    height: 30vh;
-    overflow: scroll;
-}
 
 .dropdown-menu.dropdown-menu-dark.show {
-    height: auto;
+  overflow: scroll;
 }
 
-.btn-close.hide{
-    display: none;
+/* tag selectionner par la recherche par tag */
+
+.selected-tag {
+  width: 100%;
+}
+
+.btn-close.hide {
+  display: none;
+}
+
+.btn-close {
+  width: auto;
+}
+
+/* card recette */
+.recipe-container {
+  width: 23rem;
+  height: 730px;
+  background-color: white;
+  margin-bottom: 5%;
+}
+
+.recipe-content {
+  padding: 1%;
+}
+
+.name-ingredients {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.recipe-content_container-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.quantity-ingredients {
+  color: lightgrey;
+}
+
+.recipe-media {
+  height: 253px;
+  object-fit: cover;
 }
