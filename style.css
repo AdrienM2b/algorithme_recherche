@@ -92,8 +92,8 @@ p {
   width: 100%;
 }
 
-filters_nbr-recipes_container {
-  width: 50vh !important;
+.filters_nbr-recipes_container {
+  width: 50vh;
 }
 
 /*  conteneur des tag selectionnés */

@@ -51,62 +51,65 @@
       </div>
     </header>
     <main>
-      <div class="forms_container">
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Ingredients
-          </button>
-          <div class="dropdown-menu dropdown-menu-dark">
-            <input
-              type="text"
-              class="input_recherche_tag_list-ingredients"
-              id="ingredients"
-            />
-            <ul class="list-elements-recette" id="list-ingredients"></ul>
+      <div class="forms_container filters">
+        <div class="filters_dropdown_nbr-recipes">
+          <div class="dropdown filters_dropdown_container">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Ingredients
+            </button>
+            <div class="dropdown-menu dropdown-menu-dark">
+              <input
+                type="text"
+                class="input_recherche_tag_list-ingredients"
+                id="ingredients"
+              />
+              <ul class="list-elements-recette" id="list-ingredients"></ul>
+            </div>
           </div>
-        </div>
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Ustensiles
-          </button>
-          <div class="dropdown-menu dropdown-menu-dark">
-            <input
-              type="text"
-              class="input_recherche_tag_list-ustensils"
-              id="ustensils"
-            />
-            <ul class="list-elements-recette" id="list-ustensils"></ul>
+          <div class="dropdown filters_dropdown_container">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Ustensiles
+            </button>
+            <div class="dropdown-menu dropdown-menu-dark">
+              <input
+                type="text"
+                class="input_recherche_tag_list-ustensils"
+                id="ustensils"
+              />
+              <ul class="list-elements-recette" id="list-ustensils"></ul>
+            </div>
           </div>
-        </div>
-        <div class="dropdown">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Appareils
-          </button>
-          <div class="dropdown-menu dropdown-menu-dark">
-            <input
-              type="text"
-              class="input_recherche_tag_list-appliance"
-              id="appliance"
-            />
-            <ul class="list-elements-recette" id="list-appliance"></ul>
+          <div class="dropdown filters_dropdown_container">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Appareils
+            </button>
+            <div class="dropdown-menu dropdown-menu-dark">
+              <input
+                type="text"
+                class="input_recherche_tag_list-appliance"
+                id="appliance"
+              />
+              <ul class="list-elements-recette" id="list-appliance"></ul>
+            </div>
           </div>
+          <span class="nbr_de_recette filters_nbr-recipes_container"></span>
         </div>
-        <span class="nbr_de_recette"></span>
+        <span class="filters_selected-tag"></span>
       </div>
       <div
         class="card-group d-flex justify-content-between"
