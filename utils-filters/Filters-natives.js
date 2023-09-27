@@ -10,7 +10,7 @@ import {
 
 function filtersFactory(recipes, input) {
   // Créer une constante avec flatMap opur pouvoir l'utiliser dans la fonction extractELements
-  const mappedIngredient = recipes.flatMap((recipes) => recipes.ingredients);
+  // const mappedIngredient = recipes.flatMap((recipe) => recipe.ingredients);
 
   // On defini les différentes listes qu'on remet à zéro à la lecture de la fonction
   const dataListIngredients = document.querySelector('#list-ingredients');
@@ -23,9 +23,9 @@ function filtersFactory(recipes, input) {
   // On appelle les fonctions qui vont créer les listes
   const extractElementsIngredients = extractElements(
     recipes,
-    'ingredient',
-    dataListIngredients,
-    mappedIngredient
+    'ingredients',
+    dataListIngredients
+    // mappedIngredient
   );
   const extractElementsUstensils = extractElements(
     recipes,
@@ -70,33 +70,44 @@ function filtersFactory(recipes, input) {
 }
 
 // création des listes en fonction des données reçues
-function extractElements(recipes, type, datalist, mappedIngredient) {
-  //   const uniqueElements = [];
-  if (type === 'ingredient') {
-    const justIngredients = mappedIngredient.flatMap((recipe) =>
-      recipe[type].toString().toLowerCase()
-    );
+function extractElements(recipes, type, datalist) {
+  let arrayOfElements = [];
+  for (let i = 0; i < recipes.length; i++) {
+    // on recupere chaque recette dans la variable recette
+    const recette = recipes[i];
+    const allElements = recette[type];
 
-    return console.log([...new Set(justIngredients)]);
-    const ingredientListReduite = justIngredients.reduce(
-      (acc, currentIngredient) =>
-        acc.includes(currentIngredient) ? acc : acc.concat(currentIngredient),
-      []
-    );
-    console.log(ingredientListReduite);
-    // createHtmlElement(ingredientListReduite, datalist);
-    // return ingredientListReduite;
-  } else {
-    const elements = recipes.map((recipe) => recipe[type].toLowerCase());
-    return console.log([...new Set(elements)]);
-    // const elementsListReduite = elements.reduce(
-    //   (acc, currentElements) =>
-    //     acc.includes(currentElements) ? acc : acc.concat(currentElements),
-    //   uniqueElements
-    // );
-    // createHtmlElement(elementsListReduite, datalist);
-    // return elementsListReduite;
+    // on lui passe type pour extraire les élements des recette
+    const allIngredients = allElements;
+    const allAppliance = allElements.toString().toLowerCase();
+    const allUstensiles = allElements;
+
+    switch (type) {
+      case 'ingredients':
+        for (let j = 0; j < allIngredients.length; j++) {
+          const uniqueIngredient = allIngredients[j].ingredient
+            .toString()
+            .toLowerCase();
+          arrayOfElements.push(uniqueIngredient);
+        }
+        break;
+      case 'ustensils':
+        for (let k = 0; k < allUstensiles.length; k++) {
+          const uniqueUstensiles = allUstensiles[k].toString().toLowerCase();
+          arrayOfElements.push(uniqueUstensiles);
+        }
+        break;
+      case 'appliance':
+        arrayOfElements.push(allAppliance);
+        break;
+    }
   }
+  const uniqueList = arrayOfElements.reduce(
+    (acc, currentElement) =>
+      acc.includes(currentElement) ? acc : acc.concat(currentElement),
+    []
+  );
+  return createHtmlElement(uniqueList, datalist);
 }
 
 // Creation d'un fonction pour factoriser les Listeners sur les listes
@@ -122,12 +133,10 @@ function addEventListenerInputs(
   inputDataList,
   recipes
 ) {
-  console.log(uniqueElements);
   inputDataList.addEventListener('input', () => {
     const valueOfinputDataList = inputDataList.value;
     if (valueOfinputDataList.length >= 3) {
       const filteredElements = uniqueElements.filter((element) => {
-        console.log({ element });
         return element.toLowerCase().includes(valueOfinputDataList);
       });
       datalist.innerHTML = '';
