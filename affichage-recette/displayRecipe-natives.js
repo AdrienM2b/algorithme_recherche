@@ -1,6 +1,6 @@
 import { recherchePrincipale } from '../algorithme/algo_methode_natives.js';
 import { filtersFactory } from '../utils-filters/Filters-natives.js';
-import { recipesFactory } from '../recipe-factory.js';
+import { recipesFactory } from './recipe-factory.js';
 
 const cardContainer = document.querySelector('#card_container');
 
