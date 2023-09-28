@@ -13,8 +13,7 @@ function recipesFactory(data) {
   function recipesDesign() {
     // card de la recette
     const recipeContainer = document.createElement('article');
-    recipeContainer.classList =
-      'card-sm rounded-4 col-md-3 mb-3 recipe-container gap-3';
+    recipeContainer.classList = 'card-sm rounded-4 recipe-container';
 
     // L'image
     const mediaRecipe = document.createElement('img');
@@ -28,20 +27,21 @@ function recipesFactory(data) {
       : (URLImage = baseURLImage + `/Recette` + id + `.jpg`);
     mediaRecipe.setAttribute('src', URLImage);
 
+    // contenu sous la photo wrapper dans une div pour ajouter le style
+    const containerContentCard = document.createElement('div');
+    containerContentCard.classList = 'card-body p-3 rounded-4 rounded-top-0';
     // contenu de la recette
     const recipeContent = document.createElement('div');
-    recipeContent.classList.add('card-body');
-    recipeContent.classList.add('recipe-content');
+    recipeContent.classList = 'recipe-content mb-3';
 
     // titre de la recette
     const recipeTitle = document.createElement('h2');
-    recipeTitle.classList.add('card-title');
-    recipeTitle.classList.add('recipe-content_title');
+    recipeTitle.classList = 'card-title recipe-content_title mb-4 mt-4';
     recipeTitle.textContent = name;
 
     // conteneur de la descritption
     const recipeDescription = document.createElement('div');
-    recipeDescription.classList.add('recipe-content-descritpion');
+    recipeDescription.classList = 'recipe-content-descritpion mt-3';
 
     // titre de la recette
     const recipeTextTitle = document.createElement('h3');
@@ -55,13 +55,12 @@ function recipesFactory(data) {
 
     // descritpion de la recette
     const recipeText = document.createElement('p');
-    recipeText.classList.add('card-text');
-    recipeText.classList.add('recipe-content_text');
+    recipeText.classList = 'card-text recipe-content_text';
     recipeText.textContent = truncate(description, 181);
 
     // conteneur du titre et des ingredients
     const recipeIngredients = document.createElement('div');
-    recipeIngredients.classList.add('recipe-content-ingredients');
+    recipeIngredients.classList = 'recipe-content-ingredients mt-3';
 
     // titre Ingredients
     const recipeIngredientsTitle = document.createElement('h3');
@@ -70,10 +69,8 @@ function recipesFactory(data) {
 
     // conteneur des ingredients
     const ingredientsListContainer = document.createElement('div');
-    ingredientsListContainer.classList.add('card-text');
-    ingredientsListContainer.classList.add(
-      'recipe-content_container-ingredients'
-    );
+    ingredientsListContainer.classList =
+      'card-text recipe-content_container-ingredients';
 
     ingredients.forEach((listIngredients) => {
       let list = listIngredients.ingredient;
@@ -93,15 +90,16 @@ function recipesFactory(data) {
 
     recipeDescription.appendChild(recipeTextTitle);
     recipeDescription.appendChild(recipeText);
-    recipeContent.appendChild(recipeTitle);
-    recipeContent.appendChild(recipeDescription);
+    containerContentCard.appendChild(recipeTitle);
+    containerContentCard.appendChild(recipeDescription);
 
     recipeIngredients.appendChild(recipeIngredientsTitle);
     recipeIngredients.appendChild(ingredientsListContainer);
+    containerContentCard.appendChild(recipeIngredients);
 
     recipeContainer.appendChild(mediaRecipe);
-    recipeContainer.appendChild(recipeContent);
-    recipeContainer.appendChild(recipeIngredients);
+    recipeContainer.appendChild(containerContentCard);
+    // recipeContainer.appendChild(recipeIngredients);
 
     return recipeContainer;
   }

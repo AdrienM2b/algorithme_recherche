@@ -51,8 +51,8 @@
       </div>
     </header>
     <main>
-      <div class="forms_container filters">
-        <div class="filters_dropdown_nbr-recipes">
+      <div class="filters d-flex flex-column">
+        <div class="filters_dropdown_nbr-recipes d-flex flex-row">
           <div class="dropdown filters_dropdown_container">
             <button
               class="btn btn-secondary dropdown-toggle"
@@ -109,12 +109,9 @@
           </div>
           <span class="nbr_de_recette filters_nbr-recipes_container"></span>
         </div>
-        <span class="filters_selected-tag"></span>
+        <div class="selected-tag_container d-flex flex-row gap-3"></div>
       </div>
-      <div
-        class="card-group d-flex justify-content-between"
-        id="card_container"
-      ></div>
+      <div class="row row-cols-1 row-cols-md-3 g-4" id="card_container"></div>
     </main>
     <footer></footer>
     <script src="recipes.json"></script>

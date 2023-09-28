@@ -27,7 +27,7 @@ h2 {
 
 h3 {
   font-family: Manrope;
-  color: #7a7a7a;
+  color: #7a7a7a !important;
   text-transform: uppercase;
   font-size: 12px !important;
 }
@@ -81,10 +81,12 @@ p {
   height: 10vh;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2%;
 }
 /* block avec le nombre de recette + les dropdown des filtres */
 .filters_dropdown_nbr-recipes {
   width: 100%;
+  margin-bottom: 2%;
 }
 
 /* les conteneurs des dropdown et du nombre de recette */
@@ -101,6 +103,32 @@ p {
   width: 20%;
 }
 
+/* tag selectionnés */
+.selected-tag_container {
+  display: block;
+  width: 100%;
+  height: 53px;
+  margin-bottom: 4%;
+}
+
+.selected-tag_items {
+  height: 100%;
+  width: 150px;
+  background-color: #ffd15b;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10%;
+}
+
+.selected-tag_items :nth-child(n) {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-close {
+  font-size: 70%;
+}
+
 /* menu déroulant */
 
 .dropdown-menu.dropdown-menu-dark.show {
@@ -113,22 +141,25 @@ p {
   width: 100%;
 }
 
-.btn-close.hide {
-  display: none;
-}
-
 .btn-close {
   width: auto;
 }
 
 /* card recette */
+
+.card-group {
+  margin-top: 5%;
+}
+
 .recipe-container {
   width: 23rem;
   height: 730px;
-  background-color: white;
   margin-bottom: 5%;
 }
-
+.card-body {
+  background-color: white;
+  height: 500px;
+}
 .recipe-content {
   padding: 1%;
 }
