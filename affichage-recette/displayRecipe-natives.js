@@ -5,10 +5,11 @@ import { recipesFactory } from './recipe-factory.js';
 const cardContainer = document.querySelector('#card_container');
 
 function removeTag() {
-  const formContainer = document.querySelector('.forms_container');
-  const tagButton = formContainer.querySelector('.btn-close');
+  const tagContainer = document.querySelector('.selected-tag_container');
+  const tagButton = tagContainer.querySelector('.selected-tag_items');
   if (tagButton) {
-    formContainer.removeChild(tagButton);
+    tagContainer.toggleAttribute('hide');
+    tagContainer.removeChild(tagButton);
   }
 }
 
