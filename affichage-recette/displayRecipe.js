@@ -1,5 +1,5 @@
-import { recherchePrincipale } from '../algorithme/algo_methode_natives.js';
-import { filtersFactory } from '../utils-filters/Filters-natives.js';
+import { recherchePrincipale } from '../algorithme_de_recherche/algo_methode_array.js';
+import { filtersFactory } from '../utils-filters/Filters.js';
 import { recipesFactory } from './recipe-factory.js';
 
 const cardContainer = document.querySelector('#card_container');

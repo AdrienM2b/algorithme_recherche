@@ -1,30 +1,19 @@
-import { displaySearch } from './displayRecipe-array.js';
-
+import { displaySearch } from '../affichage-recette/displayRecipe.js';
 
 async function getData() {
-    let reponse = await fetch('recipes.json');
-    let recipes = (await reponse).json();
+  let reponse = await fetch('recipes.json');
+  let recipes = (await reponse).json();
 
-    return recipes;
+  return recipes;
 }
 
-const cardContainer = document.querySelector('#card_container')
+const cardContainer = document.querySelector('#card_container');
 
-async function init(){
-    const {recipes} = await getData()
-    displaySearch(recipes)
+async function init() {
+  const { recipes } = await getData();
+  displaySearch(recipes);
 }
-init()
-
-
-
-
-
-
-
-
-
-
+init();
 
 // async function nbrOfRecipes (){
 //     // compter le nombre de recette
@@ -65,6 +54,3 @@ init()
 //             }
 //     })
 // }
-
-
-
