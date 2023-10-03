@@ -21,7 +21,7 @@ function recipesFactory(data) {
       'card-img-top rounded-4 rounded-bottom-0 recipe-media';
 
     let URLImage = '';
-    const baseURLImage = '/Photos P7 JS Les petits plats';
+    const baseURLImage = '/Photos_P7_les_petits_plats';
     id < 10
       ? (URLImage = baseURLImage + `/Recette0` + id + `.jpg`)
       : (URLImage = baseURLImage + `/Recette` + id + `.jpg`);
