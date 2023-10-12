@@ -23,7 +23,7 @@ function addTagButton(recipes, tagName) {
   const tagText = document.createElement('p');
   tagItems.classList =
     'selected-tag_items d-flex justify-content-between align-items-center';
-  const buttonTag = document.createElement('button');
+  const buttonTag = document.createElement('span');
   buttonTag.classList = 'btn-close';
   tagText.textContent = tagName;
   // Ajoutez le nouveau bouton
