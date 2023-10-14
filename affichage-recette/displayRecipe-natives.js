@@ -41,11 +41,14 @@ function displaySearch(recipes, selectedElement) {
 
 function showRecipes(recipes, valueInput) {
   cardContainer.innerHTML = ''; // Effacez le contenu précédent
+  nbrOfRecipes(recipes);
 
   if (recipes.length === 0) {
+    nbrOfRecipes(recipes);
     // Aucune recette trouvée, affichez le message
     cardContainer.innerHTML = ' Aucune recette ne contient ' + valueInput.value;
   } else {
+    nbrOfRecipes(recipes);
     // Des recettes ont été trouvées
     for (let i = 0; i < recipes.length; i++) {
       const recipe = recipes[i];
@@ -54,6 +57,19 @@ function showRecipes(recipes, valueInput) {
       cardContainer.appendChild(showTheRecipes);
     }
   }
+}
+
+function nbrOfRecipes(recipes) {
+  const containerNbrOfRecipes = document.querySelector('.nbr_de_recette');
+  let i = 0;
+  let nbrTotalOfRecipes = 0;
+  while (i < recipes.length) {
+    nbrTotalOfRecipes++;
+    i++;
+  }
+  containerNbrOfRecipes.textContent = nbrTotalOfRecipes + ' recettes';
+
+  return containerNbrOfRecipes;
 }
 
 export { displaySearch, showRecipes };
