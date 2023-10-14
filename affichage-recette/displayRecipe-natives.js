@@ -18,6 +18,7 @@ function displaySearch(recipes, selectedElement) {
   // J'affiche par défaut les 50 recettes
   filtersFactory(recipes);
   showRecipes(recipes);
+
   valueInput.addEventListener('input', () => {
     removeTag();
     const inputValue = valueInput.value;
@@ -45,6 +46,7 @@ function showRecipes(recipes, valueInput) {
   if (recipes.length === 0) {
     // Aucune recette trouvée, affichez le message
     cardContainer.innerHTML = ' Aucune recette ne contient ' + valueInput.value;
+    nbrOfRecipes(recipes);
   } else {
     // Des recettes ont été trouvées
     for (let i = 0; i < recipes.length; i++) {
@@ -53,13 +55,21 @@ function showRecipes(recipes, valueInput) {
       const showTheRecipes = getRecipeFact.recipesDesign();
       cardContainer.appendChild(showTheRecipes);
     }
+    nbrOfRecipes(recipes);
   }
+}
 
-  // const nbrPromise = nbrOfRecipes() // Obtention de la promesse
-  // const nbr = await nbrPromise
-  // console.log(nbr)
-  // if(nbr < 3){
-  //     cardContainer.style.marginRight = '36%'
+function nbrOfRecipes(recipes) {
+  const containerNbrOfRecipes = document.querySelector('.nbr_de_recette');
+  let i = 0;
+  let nbrTotalOfRecipes = 0;
+  while (i < recipes.length) {
+    nbrTotalOfRecipes++;
+    i++;
+  }
+  containerNbrOfRecipes.textContent = nbrTotalOfRecipes + ' recettes';
+
+  return containerNbrOfRecipes;
 }
 
 export { displaySearch, showRecipes };
