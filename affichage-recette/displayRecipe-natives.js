@@ -54,12 +54,6 @@ function showRecipes(recipes, valueInput) {
       cardContainer.appendChild(showTheRecipes);
     }
   }
-
-  // const nbrPromise = nbrOfRecipes() // Obtention de la promesse
-  // const nbr = await nbrPromise
-  // console.log(nbr)
-  // if(nbr < 3){
-  //     cardContainer.style.marginRight = '36%'
 }
 
 export { displaySearch, showRecipes };
