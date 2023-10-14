@@ -9,9 +9,6 @@ import {
 } from '../utils-filters/filters-factory-natives.js';
 
 function filtersFactory(recipes, input) {
-  // Créer une constante avec flatMap opur pouvoir l'utiliser dans la fonction extractELements
-  // const mappedIngredient = recipes.flatMap((recipe) => recipe.ingredients);
-
   // On defini les différentes listes qu'on remet à zéro à la lecture de la fonction
   const dataListIngredients = document.querySelector('#list-ingredients');
   const dataListUstensiles = document.querySelector('#list-ustensils');
@@ -24,18 +21,20 @@ function filtersFactory(recipes, input) {
   const extractElementsIngredients = extractElements(
     recipes,
     'ingredients',
-    dataListIngredients
-    // mappedIngredient
+    dataListIngredients,
+    input
   );
   const extractElementsUstensils = extractElements(
     recipes,
     'ustensils',
-    dataListUstensiles
+    dataListUstensiles,
+    input
   );
   const extractElementsAppliance = extractElements(
     recipes,
     'appliance',
-    dataListAppareils
+    dataListAppareils,
+    input
   );
 
   // On defini les différentes input des listes
@@ -70,7 +69,7 @@ function filtersFactory(recipes, input) {
 }
 
 // création des listes en fonction des données reçues
-function extractElements(recipes, type, datalist) {
+function extractElements(recipes, type, datalist, input) {
   let arrayOfElements = [];
   for (let i = 0; i < recipes.length; i++) {
     // on recupere chaque recette dans la variable recette
@@ -88,17 +87,20 @@ function extractElements(recipes, type, datalist) {
           const uniqueIngredient = allIngredients[j].ingredient
             .toString()
             .toLowerCase();
-          arrayOfElements.push(uniqueIngredient);
+          if (input !== uniqueIngredient) {
+            arrayOfElements.push(uniqueIngredient);
+          }
         }
         break;
       case 'ustensils':
         for (let k = 0; k < allUstensiles.length; k++) {
           const uniqueUstensiles = allUstensiles[k].toString().toLowerCase();
-          arrayOfElements.push(uniqueUstensiles);
+          if (input !== uniqueUstensiles)
+            arrayOfElements.push(uniqueUstensiles);
         }
         break;
       case 'appliance':
-        arrayOfElements.push(allAppliance);
+        if (input !== allAppliance) arrayOfElements.push(allAppliance);
         break;
     }
   }
@@ -110,9 +112,8 @@ function extractElements(recipes, type, datalist) {
   return createHtmlElement(uniqueList, datalist);
 }
 
-// Creation d'un fonction pour factoriser les Listeners sur les listes
+// Creation d'une fonction pour factoriser les Listeners sur les listes
 function addEventListenerToDropdownItems(recipes, dataList) {
-  // const formContainer = document.querySelector('.forms_container')
   dataList.querySelectorAll('.dropdown-item').forEach((button, index) => {
     button.addEventListener('click', () => {
       const selectedIngredient = button.textContent;

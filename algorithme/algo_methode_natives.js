@@ -109,7 +109,6 @@ function rechercheParTag(data, input) {
       resultatRechcercheParTag.push(recette);
     }
   }
-
   return resultatRechcercheParTag;
 }
 export { recherchePrincipale, rechercheParTag };
