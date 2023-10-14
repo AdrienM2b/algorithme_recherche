@@ -24,18 +24,20 @@ function filtersFactory(recipes, input) {
   const extractElementsIngredients = extractElements(
     recipes,
     'ingredients',
-    dataListIngredients
-    // mappedIngredient
+    dataListIngredients,
+    input
   );
   const extractElementsUstensils = extractElements(
     recipes,
     'ustensils',
-    dataListUstensiles
+    dataListUstensiles,
+    input
   );
   const extractElementsAppliance = extractElements(
     recipes,
     'appliance',
-    dataListAppareils
+    dataListAppareils,
+    input
   );
 
   // On defini les différentes input des listes
@@ -88,17 +90,19 @@ function extractElements(recipes, type, datalist) {
           const uniqueIngredient = allIngredients[j].ingredient
             .toString()
             .toLowerCase();
-          arrayOfElements.push(uniqueIngredient);
+          if (input !== uniqueIngredient)
+            arrayOfElements.push(uniqueIngredient);
         }
         break;
       case 'ustensils':
         for (let k = 0; k < allUstensiles.length; k++) {
           const uniqueUstensiles = allUstensiles[k].toString().toLowerCase();
-          arrayOfElements.push(uniqueUstensiles);
+          if (input !== uniqueUstensiles)
+            arrayOfElements.push(uniqueUstensiles);
         }
         break;
       case 'appliance':
-        arrayOfElements.push(allAppliance);
+        if (input !== allAppliance) arrayOfElements.push(allAppliance);
         break;
     }
   }
