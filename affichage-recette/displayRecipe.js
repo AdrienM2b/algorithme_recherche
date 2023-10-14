@@ -40,12 +40,15 @@ function displaySearch(recipes, selectedElement) {
 }
 
 function showRecipes(recipes, valueInput) {
+  nbrOfRecipes(recipes);
   cardContainer.innerHTML = ''; // Effacez le contenu précédent
 
   if (recipes.length === 0) {
+    nbrOfRecipes(recipes);
     // Aucune recette trouvée, affichez le message
     cardContainer.innerHTML = ' Aucune recette ne contient ' + valueInput.value;
   } else {
+    nbrOfRecipes(recipes);
     // Des recettes ont été trouvées
     for (let i = 0; i < recipes.length; i++) {
       const recipe = recipes[i];
@@ -54,12 +57,19 @@ function showRecipes(recipes, valueInput) {
       cardContainer.appendChild(showTheRecipes);
     }
   }
+}
 
-  // const nbrPromise = nbrOfRecipes() // Obtention de la promesse
-  // const nbr = await nbrPromise
-  // console.log(nbr)
-  // if(nbr < 3){
-  //     cardContainer.style.marginRight = '36%'
+function nbrOfRecipes(recipes) {
+  const containerNbrOfRecipes = document.querySelector('.nbr_de_recette');
+  let i = 0;
+  let nbrTotalOfRecipes = 0;
+  while (i < recipes.length) {
+    nbrTotalOfRecipes++;
+    i++;
+  }
+  containerNbrOfRecipes.textContent = nbrTotalOfRecipes + ' recettes';
+
+  return containerNbrOfRecipes;
 }
 
 export { displaySearch, showRecipes };

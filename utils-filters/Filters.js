@@ -3,9 +3,6 @@ import { showRecipes } from '../affichage-recette/displayRecipe.js';
 import { createHtmlElement, addTagButton } from './filters-factory.js';
 
 function filtersFactory(recipes, input) {
-  // Créer une constante avec flatMap opur pouvoir l'utiliser dans la fonction extractELements
-  // const mappedIngredient = recipes.flatMap((recipe) => recipe.ingredients);
-
   // On defini les différentes listes qu'on remet à zéro à la lecture de la fonction
   const dataListIngredients = document.querySelector('#list-ingredients');
   const dataListUstensiles = document.querySelector('#list-ustensils');
@@ -66,7 +63,7 @@ function filtersFactory(recipes, input) {
 }
 
 // création des listes en fonction des données reçues
-function extractElements(recipes, type, datalist) {
+function extractElements(recipes, type, datalist, input) {
   let arrayOfElements = [];
   for (let i = 0; i < recipes.length; i++) {
     // on recupere chaque recette dans la variable recette
