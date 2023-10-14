@@ -1,21 +1,30 @@
+// La fonction prend l'argument chaine correspondant aux élements Ingredients, ustensiles et appliance
+// l'argument recherche correpondant à l'input
+// et la longueur de la recherche donc l'input length
+
 function recherchePrincipale(data, input) {
-  // initialisation du nouveau tableau qui va accueuillir les datas triées
-  const resultatRechcerche = [];
-  //   Mettre l'input en minuscule et calculer sa longueur
+  // initialisation du nouveau tableau qui va accueillir les données triées
+  const resultatRecherche = [];
+  // Mettre l'input en minuscule et calculer sa longueur
   const inputLowerCase = input.toLowerCase();
   const longueurCorrespondance = input.length;
+
   // parcourir toutes les recettes
   for (let i = 0; i < data.length; i++) {
-    // on recupere chaque recette dans la variable recette
+    // on récupère chaque recette dans la variable recette
     const recette = data[i];
-    // On decoupe les recettes par élements 'ingredients', 'ustensiles'..
+    // On découpe les recettes par éléments 'ingredients', 'ustensiles'..
     const allIngredients = recette.ingredients;
-    const allUstensiles = recette.ustensils;
-    const allAppliance = recette.appliance;
+    const titleRecipes = recette.name;
+    const descriptionRecipes = recette.description.split(' ');
+
+    // Variable pour suivre si une correspondance a été trouvée dans cette recette
+    let correspondanceTrouvee = false;
+
     // Une boucle pour traverser tous les ingrédients
     for (let j = 0; j < allIngredients.length; j++) {
-      // une constante qui récupere 1 par 1 les ingrédients contentu dans le tableau allIngredients
-      //   et les transforme en string et minuscule
+      // une constante qui récupère 1 par 1 les ingrédients contenu dans le tableau allIngredients
+      // et les transforme en string et minuscule
       const uniqueIngredients = allIngredients[j].ingredient
         .toString()
         .toLowerCase();
@@ -27,37 +36,46 @@ function recherchePrincipale(data, input) {
           longueurCorrespondance
         )
       ) {
-        resultatRechcerche.push(recette);
-        break;
+        correspondanceTrouvee = true;
+        break; // Sortir de la boucle interne si une correspondance est trouvée
       }
     }
-    for (let k = 0; k < allUstensiles.length; k++) {
-      // une constante qui récupere 1 par 1 les ustensiles contentu dans le tableau allUstensiles
-      // et les transforme en string et minuscule
-      const uniqueUstensiles = allUstensiles[k];
-      // On regarde si la fonction renvoie True et on envoie les données au tableau
-      if (
-        correspondanceElements(
-          uniqueUstensiles,
-          inputLowerCase,
-          longueurCorrespondance
-        )
-      ) {
-        resultatRechcerche.push(recette);
-        break;
+
+    if (!correspondanceTrouvee) {
+      for (let k = 0; k < descriptionRecipes.length; k++) {
+        // une constante qui récupère 1 par 1 les mots contenu dans le texte de la description
+        // et les transforme en minuscule
+        const uniqueDescriptionRecipe = descriptionRecipes[k].toLowerCase();
+        // On regarde si la fonction renvoie True et on envoie les données au tableau
+        if (
+          correspondanceElements(
+            uniqueDescriptionRecipe,
+            inputLowerCase,
+            longueurCorrespondance
+          )
+        ) {
+          correspondanceTrouvee = true;
+          break; // Sortir de la boucle interne si une correspondance est trouvée dans la description
+        }
       }
     }
-    const applianceLowerCase = allAppliance.toString().toLowerCase();
-    if (correspondanceElements(applianceLowerCase, inputLowerCase)) {
-      resultatRechcerche.push(recette);
+
+    if (!correspondanceTrouvee) {
+      const titleRecipesLowerCase = titleRecipes.toString().toLowerCase();
+      if (correspondanceElements(titleRecipesLowerCase, inputLowerCase)) {
+        correspondanceTrouvee = true;
+      }
+    }
+
+    if (correspondanceTrouvee) {
+      resultatRecherche.push(recette);
+      // Une correspondance a été trouvée dans cette recette, mais nous ne sortons pas de la boucle principale
     }
   }
-  return resultatRechcerche;
+
+  return resultatRecherche;
 }
 
-// La fonction prend l'argument chaine correspondant aux élements Ingredients, ustensiles et appliance
-// l'argument recherche correpondant à l'input
-// et la longueur de la recherche donc l'input length
 function correspondanceElements(chaine, recherche, longueurCorrespondance) {
   // les élements sont découpés de la valeur 0 à l'input length (minimum 3)
   // puis stocké dans une valeur
