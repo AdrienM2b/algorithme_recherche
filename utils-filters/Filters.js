@@ -1,12 +1,6 @@
-import { rechercheParTag } from '../algorithme/algo_methode_natives.js';
-import {
-  showRecipes,
-  displaySearch,
-} from '../affichage-recette/displayRecipe-natives.js';
-import {
-  createHtmlElement,
-  addTagButton,
-} from '../utils-filters/filters-factory-natives.js';
+import { rechercheParTag } from '../algorithme_de_recherche/algo_methode_array.js';
+import { showRecipes } from '../affichage-recette/displayRecipe.js';
+import { createHtmlElement, addTagButton } from './filters-factory.js';
 
 function filtersFactory(recipes, input) {
   // On defini les différentes listes qu'on remet à zéro à la lecture de la fonction
@@ -87,9 +81,8 @@ function extractElements(recipes, type, datalist, input) {
           const uniqueIngredient = allIngredients[j].ingredient
             .toString()
             .toLowerCase();
-          if (input !== uniqueIngredient) {
+          if (input !== uniqueIngredient)
             arrayOfElements.push(uniqueIngredient);
-          }
         }
         break;
       case 'ustensils':
@@ -112,8 +105,9 @@ function extractElements(recipes, type, datalist, input) {
   return createHtmlElement(uniqueList, datalist);
 }
 
-// Creation d'une fonction pour factoriser les Listeners sur les listes
+// Creation d'un fonction pour factoriser les Listeners sur les listes
 function addEventListenerToDropdownItems(recipes, dataList) {
+  // const formContainer = document.querySelector('.forms_container')
   dataList.querySelectorAll('.dropdown-item').forEach((button, index) => {
     button.addEventListener('click', () => {
       const selectedIngredient = button.textContent;
