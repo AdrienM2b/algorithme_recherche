@@ -156,6 +156,16 @@ p {
   height: 730px;
   margin-bottom: 5%;
 }
+
+.badge {
+  font-family: Manrope !important;
+  top: 2.5rem;
+  right: 2rem;
+  background-color: #ffd15b;
+  color: black !important;
+  font-size: 12px !important;
+}
+
 .card-body {
   background-color: white;
   height: 500px;

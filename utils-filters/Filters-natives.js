@@ -1,17 +1,11 @@
 import { rechercheParTag } from '../algorithme/algo_methode_natives.js';
-import {
-  showRecipes,
-  displaySearch,
-} from '../affichage-recette/displayRecipe-natives.js';
+import { showRecipes } from '../affichage-recette/displayRecipe-natives.js';
 import {
   createHtmlElement,
   addTagButton,
 } from '../utils-filters/filters-factory-natives.js';
 
 function filtersFactory(recipes, input) {
-  // Créer une constante avec flatMap opur pouvoir l'utiliser dans la fonction extractELements
-  // const mappedIngredient = recipes.flatMap((recipe) => recipe.ingredients);
-
   // On defini les différentes listes qu'on remet à zéro à la lecture de la fonction
   const dataListIngredients = document.querySelector('#list-ingredients');
   const dataListUstensiles = document.querySelector('#list-ustensils');
@@ -72,7 +66,7 @@ function filtersFactory(recipes, input) {
 }
 
 // création des listes en fonction des données reçues
-function extractElements(recipes, type, datalist) {
+function extractElements(recipes, type, datalist, input) {
   let arrayOfElements = [];
   for (let i = 0; i < recipes.length; i++) {
     // on recupere chaque recette dans la variable recette
@@ -116,7 +110,6 @@ function extractElements(recipes, type, datalist) {
 
 // Creation d'un fonction pour factoriser les Listeners sur les listes
 function addEventListenerToDropdownItems(recipes, dataList) {
-  // const formContainer = document.querySelector('.forms_container')
   dataList.querySelectorAll('.dropdown-item').forEach((button, index) => {
     button.addEventListener('click', () => {
       const selectedIngredient = button.textContent;

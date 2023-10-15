@@ -27,6 +27,10 @@ function recipesFactory(data) {
       : (URLImage = baseURLImage + `/Recette` + id + `.jpg`);
     mediaRecipe.setAttribute('src', URLImage);
 
+    const timeForRecipes = document.createElement('span');
+    timeForRecipes.textContent = time + ' min';
+    timeForRecipes.classList = 'badge position-relative float-end';
+
     // contenu sous la photo wrapper dans une div pour ajouter le style
     const containerContentCard = document.createElement('div');
     containerContentCard.classList = 'card-body p-3 rounded-4 rounded-top-0';
@@ -97,6 +101,7 @@ function recipesFactory(data) {
     recipeIngredients.appendChild(ingredientsListContainer);
     containerContentCard.appendChild(recipeIngredients);
 
+    recipeContainer.appendChild(timeForRecipes);
     recipeContainer.appendChild(mediaRecipe);
     recipeContainer.appendChild(containerContentCard);
     // recipeContainer.appendChild(recipeIngredients);
