@@ -7,8 +7,6 @@ async function getData() {
   return recipes;
 }
 
-const cardContainer = document.querySelector('#card_container');
-
 async function init() {
   const { recipes } = await getData();
   displaySearch(recipes);

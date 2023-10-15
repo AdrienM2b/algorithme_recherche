@@ -99,7 +99,6 @@ function recipesFactory(data) {
 
     recipeContainer.appendChild(mediaRecipe);
     recipeContainer.appendChild(containerContentCard);
-    // recipeContainer.appendChild(recipeIngredients);
 
     return recipeContainer;
   }
