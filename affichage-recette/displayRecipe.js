@@ -41,7 +41,7 @@ function displaySearch(recipes, selectedElement) {
 
 function showRecipes(recipes, valueInput) {
   nbrOfRecipes(recipes);
-  cardContainer.innerHTML = ''; // Effacez le contenu précédent
+  cardContainer.innerHTML = ''; // Effacez le contenu
 
   if (recipes.length === 0) {
     nbrOfRecipes(recipes);
