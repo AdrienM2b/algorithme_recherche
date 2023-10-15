@@ -67,7 +67,11 @@ function nbrOfRecipes(recipes) {
     nbrTotalOfRecipes++;
     i++;
   }
-  containerNbrOfRecipes.textContent = nbrTotalOfRecipes + ' recettes';
+  if (nbrTotalOfRecipes === 1) {
+    containerNbrOfRecipes.textContent = nbrTotalOfRecipes + ' recette';
+  } else {
+    containerNbrOfRecipes.textContent = nbrTotalOfRecipes + ' recettes';
+  }
 
   return containerNbrOfRecipes;
 }
