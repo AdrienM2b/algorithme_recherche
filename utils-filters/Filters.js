@@ -1,4 +1,4 @@
-import { rechercheParTag } from '../algorithme_de_recherche/algo_methode_array.js';
+import { rechercheParTag } from '../algorithme_de_recherche/algo_methode_native.js';
 import { showRecipes } from '../affichage-recette/displayRecipe.js';
 import { createHtmlElement, addTagButton } from './filters-factory.js';
 

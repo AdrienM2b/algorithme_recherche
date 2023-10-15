@@ -1,4 +1,4 @@
-import { recherchePrincipale } from '../algorithme_de_recherche/algo_methode_array.js';
+import { recherchePrincipale } from '../algorithme_de_recherche/algo_methode_native.js';
 import { filtersFactory } from '../utils-filters/Filters.js';
 import { recipesFactory } from './recipe-factory.js';
 
@@ -67,7 +67,11 @@ function nbrOfRecipes(recipes) {
     nbrTotalOfRecipes++;
     i++;
   }
-  containerNbrOfRecipes.textContent = nbrTotalOfRecipes + ' recettes';
+  if (nbrTotalOfRecipes === 1) {
+    containerNbrOfRecipes.textContent = nbrTotalOfRecipes + ' recette';
+  } else {
+    containerNbrOfRecipes.textContent = nbrTotalOfRecipes + ' recettes';
+  }
 
   return containerNbrOfRecipes;
 }
