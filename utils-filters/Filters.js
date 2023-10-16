@@ -1,9 +1,6 @@
 import { rechercheParTag } from '../algorithme/algo_methode_natives.js';
-import { showRecipes } from '../affichage-recette/displayRecipe-natives.js';
-import {
-  createHtmlElement,
-  addTagButton,
-} from '../utils-filters/filters-factory-natives.js';
+import { showRecipes } from '../affichage-recette/displayRecipe.js';
+import { createHtmlElement, addTagButton } from './filters-factory.js';
 
 function filtersFactory(recipes, input) {
   // On defini les différentes listes qu'on remet à zéro à la lecture de la fonction

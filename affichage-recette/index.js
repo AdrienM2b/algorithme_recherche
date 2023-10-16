@@ -1,4 +1,4 @@
-import { displaySearch } from '../affichage-recette/displayRecipe-natives.js';
+import { displaySearch } from './displayRecipe.js';
 
 async function getData() {
   let reponse = await fetch('recipes.json');
