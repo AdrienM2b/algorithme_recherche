@@ -64,8 +64,25 @@ p {
   transform: translateX(-110%);
 }
 
+.btn-secondary {
+  width: 40%;
+  height: 3vw;
+  background-color: white !important;
+  color: #1b1b1b !important;
+  font-family: Manrope !important;
+  border: none !important;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
 .fa-search {
   font-size: 150%;
+}
+
+.fa-angle-down {
+  margin-left: 10%;
 }
 
 .input-group .btn {

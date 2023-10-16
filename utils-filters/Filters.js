@@ -102,7 +102,8 @@ function extractElements(recipes, type, datalist, input) {
       acc.includes(currentElement) ? acc : acc.concat(currentElement),
     []
   );
-  return createHtmlElement(uniqueList, datalist);
+  createHtmlElement(uniqueList, datalist);
+  return uniqueList;
 }
 
 // Creation d'un fonction pour factoriser les Listeners sur les listes
