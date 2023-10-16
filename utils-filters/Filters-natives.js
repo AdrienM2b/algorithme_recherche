@@ -21,6 +21,7 @@ function filtersFactory(recipes, input) {
     dataListIngredients,
     input
   );
+
   const extractElementsUstensils = extractElements(
     recipes,
     'ustensils',
@@ -75,7 +76,7 @@ function extractElements(recipes, type, datalist, input) {
 
     // on lui passe type pour extraire les élements des recette
     const allIngredients = allElements;
-    const allAppliance = allElements.toString().toLowerCase();
+    const allAppliance = allElements;
     const allUstensiles = allElements;
 
     switch (type) {
@@ -105,7 +106,8 @@ function extractElements(recipes, type, datalist, input) {
       acc.includes(currentElement) ? acc : acc.concat(currentElement),
     []
   );
-  return createHtmlElement(uniqueList, datalist);
+  createHtmlElement(uniqueList, datalist);
+  return uniqueList;
 }
 
 // Creation d'un fonction pour factoriser les Listeners sur les listes
