@@ -84,7 +84,7 @@ function correspondanceElements(chaine, recherche, longueurCorrespondance) {
     0,
     longueurCorrespondance
   );
-  // On compare les deux valeurs et on retourne un
+  // On compare les deux valeurs et on retourne un booléen
   return premieresLettresChaine === premieresLettresRecherche;
 }
 
