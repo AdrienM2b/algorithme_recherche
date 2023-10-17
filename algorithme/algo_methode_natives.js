@@ -5,29 +5,38 @@
 function recherchePrincipale(data, input) {
   // initialisation du nouveau tableau qui va accueillir les données triées
   const resultatRecherche = [];
-  // Mettre l'input en minuscule et calculer sa longueur
+  // Tous les résultats du tri sont transformés en minuscules pour éviter les différences de casse
   const inputLowerCase = input.toLowerCase();
-  const longueurCorrespondance = input.length;
 
-  // parcourir toutes les recettes
   for (let i = 0; i < data.length; i++) {
-    // on récupère chaque recette dans la variable recette
-    const recette = data[i];
-    // On découpe les recettes par éléments 'ingredients', 'ustensiles'..
-    const allIngredients = recette.ingredients;
-    const titleRecipes = recette.name;
-    const descriptionRecipes = recette.description.split(' ');
+    const arrayOfIngredients = data[i].ingredients;
+
+    let recipeMatch = false; // Pour savoir s'il y a eu au moins une correspondance pour cette recette
+
+    for (let j = 0; j < arrayOfIngredients.length; j++) {
+      const uniqueIngredient = arrayOfIngredients[j].ingredient
+        .toString()
+        .toLowerCase();
+
+      if (uniqueIngredient.includes(inputLowerCase)) {
+        recipeMatch = true;
+      }
+    }
+
+    const lowerCaseTitre = data[i].name.toString().toLowerCase();
+    const lowerCaseDescription = data[i].description.toString().toLowerCase();
+
     if (
-      lowerCaseIngredients.includes(inputLowerCase) ||
+      recipeMatch ||
       lowerCaseTitre.includes(inputLowerCase) ||
       lowerCaseDescription.includes(inputLowerCase)
     ) {
-      resultatRechcerche.push(recette);
+      resultatRecherche.push(data[i]);
     }
-
+  }
+  console.log(resultatRecherche);
   return resultatRecherche;
 }
-
 
 function rechercheParTag(data, input) {
   // initialisation du nouveau tableau qui va accueuillir les datas triées
