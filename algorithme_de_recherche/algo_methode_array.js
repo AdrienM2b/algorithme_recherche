@@ -54,4 +54,22 @@ function rechercheParTag(data, input) {
   });
   return resultatRechcercheParTag;
 }
-export { recherchePrincipale, rechercheParTag };
+
+function chooseWichSearch(data) {
+  if (searchParams.tags.length && searchParams.inputSearch) {
+    // Si nous avons des tags et une entrée de recherche
+    let resultFromInput = recherchePrincipale(data, searchParams.inputSearch);
+    return rechercheParTag(resultFromInput, searchParams.tags);
+  } else if (searchParams.tags.length) {
+    // Si nous avons seulement des tags
+    return rechercheParTag(data, searchParams.tags);
+  } else if (searchParams.inputSearch) {
+    // Si nous avons seulement une entrée de recherche
+    return recherchePrincipale(data, searchParams.inputSearch);
+  } else {
+    // Si aucun critère n'est donné, retournez toutes les données
+    return data;
+  }
+}
+
+export { chooseWichSearch };
