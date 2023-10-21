@@ -62,10 +62,6 @@ ul {
 
 .input-group.search-bar {
   width: 80%;
-<<<<<<< HEAD
-  height: 10%;
-=======
->>>>>>> boucles_natives
 }
 
 .btn-primary {
@@ -73,21 +69,6 @@ ul {
   height: 5vh;
   margin: 1% auto;
   transform: translateX(-110%);
-<<<<<<< HEAD
-}
-
-.btn-secondary {
-  width: 40%;
-  height: 3vw;
-  background-color: white !important;
-  color: #1b1b1b !important;
-  font-family: Manrope !important;
-  border: none !important;
-}
-
-.dropdown-toggle::after {
-  display: none !important;
-=======
   border: none !important;
 }
 
@@ -105,19 +86,15 @@ ul {
 
 .reset-icon.show {
   display: block !important;
->>>>>>> boucles_natives
 }
 
 .fa-search {
   font-size: 150%;
-<<<<<<< HEAD
-=======
 }
 
 .search-btn:hover {
   background-color: #ffd15b !important;
   color: black !important;
->>>>>>> boucles_natives
 }
 
 .input-group .btn {
@@ -142,45 +119,6 @@ ul {
 }
 
 /* les conteneurs des dropdown et du nombre de recette */
-<<<<<<< HEAD
-.filters_dropdown_container {
-  width: 100%;
-}
-
-.filters_nbr-recipes_container {
-  width: 50vh;
-}
-
-/*  conteneur des tag selectionnés */
-.filters_selected-tag {
-  width: 20%;
-}
-
-/* tag selectionnés */
-.selected-tag_container {
-  display: block;
-  width: 100%;
-  height: 53px;
-  margin-bottom: 4%;
-}
-
-.selected-tag_items {
-  height: 100%;
-  width: 150px;
-  background-color: #ffd15b;
-  border-radius: 10px;
-  padding: 10px;
-  margin-bottom: 10%;
-}
-
-.selected-tag_items :nth-child(n) {
-  margin: 0;
-  padding: 0;
-}
-
-.btn-close {
-  font-size: 70%;
-=======
 .btn.dropdown-toggle {
   width: 195px;
   height: 56px;
@@ -199,7 +137,6 @@ ul {
 
 .fa-solid.fa-angle-up {
   margin-left: 10%;
->>>>>>> boucles_natives
 }
 
 .filters_dropdown_container {
@@ -218,13 +155,6 @@ ul {
   width: 20%;
 }
 /* menu déroulant */
-<<<<<<< HEAD
-
-.dropdown-menu.dropdown-menu-dark.show {
-  overflow: scroll;
-}
-
-=======
 .btn.show:active {
   border: transparent !important;
 }
@@ -325,20 +255,12 @@ ul {
   font-size: 70%;
 }
 
->>>>>>> boucles_natives
 /* tag selectionner par la recherche par tag */
 
 .selected-tag {
   width: 100%;
 }
 
-<<<<<<< HEAD
-.btn-close {
-  width: auto;
-}
-
-=======
->>>>>>> boucles_natives
 /* card recette */
 
 .card-group {
