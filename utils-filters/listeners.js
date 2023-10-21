@@ -1,6 +1,6 @@
 import { extractElements } from './extractElements.js';
 import { searchParams } from '../affichage-recette/index.js';
-import { chooseWichSearch } from '../algorithme/algo_methode_natives.js';
+import { chooseWichSearch } from '../algorithme_de_recherche/algo_methode_native.js';
 import { updateDisplay } from '../affichage-recette/displayRecipe.js';
 import { addTagButton, createHtmlElement } from './filters-factory.js';
 import { recettes } from '../recipes.js';

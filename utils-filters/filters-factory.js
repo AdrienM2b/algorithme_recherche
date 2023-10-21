@@ -1,6 +1,6 @@
 import { updateDisplay } from '../affichage-recette/displayRecipe.js';
 import { searchParams } from '../affichage-recette/index.js';
-import { chooseWichSearch } from '../algorithme/algo_methode_natives.js';
+import { chooseWichSearch } from '../algorithme_de_recherche/algo_methode_native.js';
 import { recettes } from '../recipes.js';
 // Creation du html des boutons
 function createHtmlElement(uniqueElements, dataList) {
