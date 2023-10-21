@@ -37,6 +37,11 @@ p {
   font-size: 14px;
 }
 
+ul {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
 /* header */
 
 .logo_container {
@@ -54,7 +59,6 @@ p {
 
 .input-group.search-bar {
   width: 80%;
-  height: 10%;
 }
 
 .btn-primary {
@@ -62,8 +66,10 @@ p {
   height: 5vh;
   margin: 1% auto;
   transform: translateX(-110%);
+  border: none !important;
 }
 
+<<<<<<< HEAD
 .btn-secondary {
   width: 40%;
   height: 3vw;
@@ -77,12 +83,40 @@ p {
   display: none !important;
 }
 
+=======
+.reset-icon {
+  display: none !important;
+  font-size: 20px !important;
+  position: absolute;
+  right: 150px;
+  top: 30px;
+  width: 15px;
+  height: 20px;
+  color: #7a7a7a !important;
+  z-index: 1000;
+}
+
+.reset-icon.show {
+  display: block !important;
+}
+
+/* .loupe-filter-principal_input:hover {
+  color: black;
+} */
+
+>>>>>>> boucles_natives
 .fa-search {
   font-size: 150%;
 }
 
+<<<<<<< HEAD
 .fa-angle-down {
   margin-left: 10%;
+=======
+.search-btn:hover {
+  background-color: #ffd15b !important;
+  color: black !important;
+>>>>>>> boucles_natives
 }
 
 .input-group .btn {
@@ -107,18 +141,115 @@ p {
 }
 
 /* les conteneurs des dropdown et du nombre de recette */
+.btn.dropdown-toggle {
+  width: 195px;
+  height: 56px;
+  background-color: white !important;
+  color: black;
+  font-family: Manrope !important;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.fa-solid.fa-angle-down {
+  margin-left: 10%;
+}
+
+.fa-solid.fa-angle-up {
+  margin-left: 10%;
+}
+
 .filters_dropdown_container {
-  width: 100%;
+  margin-right: 10%;
 }
 
 .filters_nbr-recipes_container {
-  width: 50vh;
+  margin-left: 20%;
+  font-family: Anton;
+  font-weight: bold;
+  font-size: 21px !important;
 }
 
 /*  conteneur des tag selectionnés */
 .filters_selected-tag {
   width: 20%;
 }
+/* menu déroulant */
+.btn.show:active {
+  border: transparent !important;
+}
+.btn.show:focus {
+  border: transparent !important;
+}
+.btn.show {
+  border: transparent !important;
+}
+.btn:first-child:active {
+  border: transparent !important;
+}
+
+.btn .dropdown-toggle {
+  border-radius: 20%;
+}
+
+.fa.clear-icon {
+  display: none;
+  position: absolute;
+  right: 40px;
+}
+.clear-icon.show {
+  display: block;
+}
+
+/* .fa.clear-icon {
+  display: none;
+  left: 67%;
+  top: 5.5%;
+  position: absolute;
+} */
+/* menu dropdown */
+
+.dropdown-menu {
+  width: 195px;
+  max-height: 20vw;
+  overflow: scroll;
+  height: auto;
+}
+
+.dropdown-menu.show {
+  border: none;
+  transform: translate3d(0px, 48px, 0px) !important;
+}
+
+.list-elements-recette li {
+  list-style: none;
+}
+
+.dropdown-item:hover {
+  background-color: #ffd15b !important;
+}
+
+.input_recherche_tag_list {
+  width: 163px;
+  height: 36px;
+  border: 1px solid #c6c6c6;
+  margin-left: 15px;
+}
+
+.loupe-filter {
+  position: absolute;
+  right: 20px;
+  font-size: 15px;
+}
+/* .loupe-filter {
+  position: relative;
+  left: 75%;
+  bottom: 3.2vh;
+  font-size: 15px;
+  color: #c6c6c6;
+} */
 
 /* tag selectionnés */
 .selected-tag_container {
@@ -146,20 +277,10 @@ p {
   font-size: 70%;
 }
 
-/* menu déroulant */
-
-.dropdown-menu.dropdown-menu-dark.show {
-  overflow: scroll;
-}
-
 /* tag selectionner par la recherche par tag */
 
 .selected-tag {
   width: 100%;
-}
-
-.btn-close {
-  width: auto;
 }
 
 /* card recette */

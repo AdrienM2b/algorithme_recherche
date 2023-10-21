@@ -1,81 +1,44 @@
 // La fonction prend l'argument chaine correspondant aux élements Ingredients, ustensiles et appliance
 // l'argument recherche correpondant à l'input
 // et la longueur de la recherche donc l'input length
+import { searchParams } from '../affichage-recette/index.js';
 
 function recherchePrincipale(data, input) {
   // initialisation du nouveau tableau qui va accueillir les données triées
   const resultatRecherche = [];
-  // Mettre l'input en minuscule et calculer sa longueur
+  // Tous les résultats du tri sont transformés en minuscules pour éviter les différences de casse
   const inputLowerCase = input.toLowerCase();
-  const longueurCorrespondance = input.length;
 
-  // parcourir toutes les recettes
   for (let i = 0; i < data.length; i++) {
-    // on récupère chaque recette dans la variable recette
-    const recette = data[i];
-    // On découpe les recettes par éléments 'ingredients', 'ustensiles'..
-    const allIngredients = recette.ingredients;
-    const titleRecipes = recette.name;
-    const descriptionRecipes = recette.description.split(' ');
+    const arrayOfIngredients = data[i].ingredients;
 
-    // Variable pour suivre si une correspondance a été trouvée dans cette recette
-    let correspondanceTrouvee = false;
+    let recipeMatch = false; // Pour savoir s'il y a eu au moins une correspondance pour cette recette
 
-    // Une boucle pour traverser tous les ingrédients
-    for (let j = 0; j < allIngredients.length; j++) {
-      // une constante qui récupère 1 par 1 les ingrédients contenu dans le tableau allIngredients
-      // et les transforme en string et minuscule
-      const uniqueIngredients = allIngredients[j].ingredient
+    for (let j = 0; j < arrayOfIngredients.length; j++) {
+      const uniqueIngredient = arrayOfIngredients[j].ingredient
         .toString()
         .toLowerCase();
-      // On regarde si la fonction renvoie True et on envoie les données au tableau
-      if (
-        correspondanceElements(
-          uniqueIngredients,
-          inputLowerCase,
-          longueurCorrespondance
-        )
-      ) {
-        correspondanceTrouvee = true;
-        break; // Sortir de la boucle interne si une correspondance est trouvée
+
+      if (uniqueIngredient.includes(inputLowerCase)) {
+        recipeMatch = true;
       }
     }
 
-    if (!correspondanceTrouvee) {
-      for (let k = 0; k < descriptionRecipes.length; k++) {
-        // une constante qui récupère 1 par 1 les mots contenu dans le texte de la description
-        // et les transforme en minuscule
-        const uniqueDescriptionRecipe = descriptionRecipes[k].toLowerCase();
-        // On regarde si la fonction renvoie True et on envoie les données au tableau
-        if (
-          correspondanceElements(
-            uniqueDescriptionRecipe,
-            inputLowerCase,
-            longueurCorrespondance
-          )
-        ) {
-          correspondanceTrouvee = true;
-          break; // Sortir de la boucle interne si une correspondance est trouvée dans la description
-        }
-      }
-    }
+    const lowerCaseTitre = data[i].name.toString().toLowerCase();
+    const lowerCaseDescription = data[i].description.toString().toLowerCase();
 
-    if (!correspondanceTrouvee) {
-      const titleRecipesLowerCase = titleRecipes.toString().toLowerCase();
-      if (correspondanceElements(titleRecipesLowerCase, inputLowerCase)) {
-        correspondanceTrouvee = true;
-      }
-    }
-
-    if (correspondanceTrouvee) {
-      resultatRecherche.push(recette);
-      // Une correspondance a été trouvée dans cette recette, mais nous ne sortons pas de la boucle principale
+    if (
+      recipeMatch ||
+      lowerCaseTitre.includes(inputLowerCase) ||
+      lowerCaseDescription.includes(inputLowerCase)
+    ) {
+      resultatRecherche.push(data[i]);
     }
   }
-
   return resultatRecherche;
 }
 
+<<<<<<< HEAD:algorithme_de_recherche/algo_methode_native.js
 function correspondanceElements(chaine, recherche, longueurCorrespondance) {
   // les élements sont découpés de la valeur 0 à l'input length (minimum 3)
   // puis stocké dans une valeur
@@ -90,26 +53,51 @@ function correspondanceElements(chaine, recherche, longueurCorrespondance) {
 
 function rechercheParTag(data, input) {
   // initialisation du nouveau tableau qui va accueuillir les datas triées
+=======
+function rechercheParTag(data, tags) {
+>>>>>>> boucles_natives:algorithme/algo_methode_natives.js
   const resultatRechcercheParTag = [];
 
-  // Tous les résultats du tri sont transformés en minuscules pour éviter les différences de casse
-  const inputLowerCase = input.toLowerCase();
   for (const recette of data) {
-    const lowerCaseIngredients = recette.ingredients.flatMap((recipe) =>
+    const lowerCaseIngredients = recette.ingredients.map((recipe) =>
       recipe.ingredient.toString().toLowerCase()
     );
     const lowerCaseUstensiles = recette.ustensils.toString().toLowerCase();
     const lowerCaseAppliance = recette.appliance.toString().toLowerCase();
-    // condition d'affichage des recettes en fonction du tri
-    if (
-      lowerCaseIngredients.includes(inputLowerCase) ||
-      lowerCaseUstensiles.includes(inputLowerCase) ||
-      lowerCaseAppliance.includes(inputLowerCase)
-    ) {
+
+    // Vérification que chaque tag est inclus dans les ingrédients, ustensiles ou appareils
+    const matchesAllTags = tags.every((tag) => {
+      const tagLowerCase = tag.toLowerCase();
+      return (
+        lowerCaseIngredients.includes(tagLowerCase) ||
+        lowerCaseUstensiles.includes(tagLowerCase) ||
+        lowerCaseAppliance.includes(tagLowerCase)
+      );
+    });
+
+    if (matchesAllTags) {
       resultatRechcercheParTag.push(recette);
     }
   }
 
   return resultatRechcercheParTag;
 }
-export { recherchePrincipale, rechercheParTag };
+
+function chooseWichSearch(data) {
+  if (searchParams.tags.length && searchParams.inputSearch) {
+    // Si nous avons des tags et une entrée de recherche
+    let resultFromInput = recherchePrincipale(data, searchParams.inputSearch);
+    return rechercheParTag(resultFromInput, searchParams.tags);
+  } else if (searchParams.tags.length) {
+    // Si nous avons seulement des tags
+    return rechercheParTag(data, searchParams.tags);
+  } else if (searchParams.inputSearch) {
+    // Si nous avons seulement une entrée de recherche
+    return recherchePrincipale(data, searchParams.inputSearch);
+  } else {
+    // Si aucun critère n'est donné, retournez toutes les données
+    return data;
+  }
+}
+
+export { chooseWichSearch };
