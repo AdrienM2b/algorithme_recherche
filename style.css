@@ -62,7 +62,19 @@ ul {
 }
 
 .reset-icon {
-  display: none;
+  display: none !important;
+  font-size: 20px !important;
+  position: absolute;
+  right: 150px;
+  top: 30px;
+  width: 15px;
+  height: 20px;
+  color: #7a7a7a !important;
+  z-index: 1000;
+}
+
+.reset-icon.show {
+  display: block !important;
 }
 
 .btn-primary {
