@@ -1,14 +1,18 @@
 import { displaySearch } from './displayRecipe.js';
+import {
+  addListenerToIndex,
+  listenSearchInput,
+} from '../utils-filters/listeners.js';
+import { recettes } from '../recipes.js';
 
-async function getData() {
-  let reponse = await fetch('recipes.json');
-  let recipes = (await reponse).json();
-
-  return recipes;
-}
+export const searchParams = {
+  inputSearch: '',
+  tags: [],
+};
 
 async function init() {
-  const { recipes } = await getData();
-  displaySearch(recipes);
+  displaySearch(recettes);
+  addListenerToIndex(recettes);
+  listenSearchInput(recettes);
 }
 init();

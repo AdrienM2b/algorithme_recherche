@@ -104,7 +104,6 @@ function recipesFactory(data) {
     recipeContainer.appendChild(timeForRecipes);
     recipeContainer.appendChild(mediaRecipe);
     recipeContainer.appendChild(containerContentCard);
-    // recipeContainer.appendChild(recipeIngredients);
 
     return recipeContainer;
   }
