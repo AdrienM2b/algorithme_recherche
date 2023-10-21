@@ -38,24 +38,7 @@ function recherchePrincipale(data, input) {
   return resultatRecherche;
 }
 
-<<<<<<< HEAD:algorithme_de_recherche/algo_methode_native.js
-function correspondanceElements(chaine, recherche, longueurCorrespondance) {
-  // les élements sont découpés de la valeur 0 à l'input length (minimum 3)
-  // puis stocké dans une valeur
-  const premieresLettresChaine = chaine.substring(0, longueurCorrespondance);
-  const premieresLettresRecherche = recherche.substring(
-    0,
-    longueurCorrespondance
-  );
-  // On compare les deux valeurs et on retourne un booléen
-  return premieresLettresChaine === premieresLettresRecherche;
-}
-
-function rechercheParTag(data, input) {
-  // initialisation du nouveau tableau qui va accueuillir les datas triées
-=======
 function rechercheParTag(data, tags) {
->>>>>>> boucles_natives:algorithme/algo_methode_natives.js
   const resultatRechcercheParTag = [];
 
   for (const recette of data) {
