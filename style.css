@@ -61,6 +61,11 @@ ul {
   width: 80%;
 }
 
+.search-btn:hover {
+  background-color: #ffd15b !important;
+  color: #1b1b1b !important;
+}
+
 .reset-icon {
   display: none !important;
   font-size: 20px !important;
@@ -94,16 +99,8 @@ ul {
   border: none !important;
 }
 
-.dropdown-toggle::after {
-  display: none !important;
-}
-
 .fa-search {
   font-size: 150%;
-}
-
-.fa-angle-down {
-  margin-left: 10%;
 }
 
 .input-group .btn {
@@ -113,6 +110,13 @@ ul {
 }
 
 /* filtre */
+.fa-angle-down {
+  margin-left: 10%;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
 
 .filters {
   width: 100%;
