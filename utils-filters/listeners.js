@@ -1,6 +1,6 @@
 import { extractElements } from './extractElements.js';
 import { searchParams } from '../affichage-recette/index.js';
-import { chooseWichSearch } from '../algorithme/algo_methode_natives.js';
+import { chooseWichSearch } from '../algorithme_de_recherche/algo_methode_array.js';
 import { updateDisplay } from '../affichage-recette/displayRecipe.js';
 import { addTagButton, createHtmlElement } from './filters-factory.js';
 import { recettes } from '../recipes.js';
@@ -142,6 +142,28 @@ document
   .forEach((button) => {
     button.addEventListener('click', manageAngleIcon);
   });
+
+document.addEventListener('click', (event) => {
+  document
+    .querySelectorAll('.filters_dropdown_container')
+    .forEach((dropdownContainer) => {
+      if (clickedOutsideOfDropdown(event, dropdownContainer)) {
+        resetAngleIcon(dropdownContainer);
+      }
+    });
+});
+
+function clickedOutsideOfDropdown(event, dropdownContainer) {
+  return !dropdownContainer.contains(event.target);
+}
+
+function resetAngleIcon(dropdownContainer) {
+  const angleIcon = dropdownContainer.querySelector('.fa-solid.fa-angle-up');
+  if (angleIcon) {
+    angleIcon.classList.remove('fa-angle-up');
+    angleIcon.classList.add('fa-angle-down');
+  }
+}
 
 function manageAngleIcon(event, element = null) {
   const dropdown = element || event.currentTarget;
