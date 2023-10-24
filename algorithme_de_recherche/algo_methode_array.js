@@ -1,3 +1,5 @@
+import { searchParams } from '../affichage-recette/index.js';
+
 function recherchePrincipale(data, input) {
   // initialisation du nouvel ensemble (Set) qui va accueillir les données triées
   const resultatRecherche = [];
