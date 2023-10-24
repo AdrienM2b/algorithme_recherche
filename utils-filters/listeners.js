@@ -143,6 +143,28 @@ document
     button.addEventListener('click', manageAngleIcon);
   });
 
+document.addEventListener('click', (event) => {
+  document
+    .querySelectorAll('.filters_dropdown_container')
+    .forEach((dropdownContainer) => {
+      if (clickedOutsideOfDropdown(event, dropdownContainer)) {
+        resetAngleIcon(dropdownContainer);
+      }
+    });
+});
+
+function clickedOutsideOfDropdown(event, dropdownContainer) {
+  return !dropdownContainer.contains(event.target);
+}
+
+function resetAngleIcon(dropdownContainer) {
+  const angleIcon = dropdownContainer.querySelector('.fa-solid.fa-angle-up');
+  if (angleIcon) {
+    angleIcon.classList.remove('fa-angle-up');
+    angleIcon.classList.add('fa-angle-down');
+  }
+}
+
 function manageAngleIcon(event, element = null) {
   const dropdown = element || event.currentTarget;
   const angleIcon = dropdown.querySelector(
