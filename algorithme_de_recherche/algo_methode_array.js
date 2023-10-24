@@ -34,26 +34,31 @@ function recherchePrincipale(data, input) {
   return resultatRecherche;
 }
 
-function rechercheParTag(data, input) {
-  // initialisation du nouveau tableau qui va accueuillir les datas triées
+function rechercheParTag(data, tags) {
   const resultatRechcercheParTag = [];
-  // Tous les résultats du tri sont transformés en minuscules pour éviter les différences de casse
-  const inputLowerCase = input.toLowerCase();
-  data.forEach((recette) => {
-    const lowerCaseIngredients = recette.ingredients.flatMap((recipe) =>
+
+  for (const recette of data) {
+    const lowerCaseIngredients = recette.ingredients.map((recipe) =>
       recipe.ingredient.toString().toLowerCase()
     );
     const lowerCaseUstensiles = recette.ustensils.toString().toLowerCase();
     const lowerCaseAppliance = recette.appliance.toString().toLowerCase();
-    // condition d'affichage des recettes en fonction du tri
-    if (
-      lowerCaseIngredients.includes(inputLowerCase) ||
-      lowerCaseUstensiles.includes(inputLowerCase) ||
-      lowerCaseAppliance.includes(inputLowerCase)
-    ) {
+
+    // Vérification que chaque tag est inclus dans les ingrédients, ustensiles ou appareils
+    const matchesAllTags = tags.every((tag) => {
+      const tagLowerCase = tag.toLowerCase();
+      return (
+        lowerCaseIngredients.includes(tagLowerCase) ||
+        lowerCaseUstensiles.includes(tagLowerCase) ||
+        lowerCaseAppliance.includes(tagLowerCase)
+      );
+    });
+
+    if (matchesAllTags) {
       resultatRechcercheParTag.push(recette);
     }
-  });
+  }
+
   return resultatRechcercheParTag;
 }
 
